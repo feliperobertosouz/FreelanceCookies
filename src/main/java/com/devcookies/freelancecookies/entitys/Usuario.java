@@ -9,14 +9,19 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
+    @Column(nullable = false)
     private String Nome;
 
+    @Column(nullable = false)
     private String Email;
 
+    @Column(nullable = false)
     private String Cpf;
 
+    @Column(nullable = false)
     private String Telefone;
 
+    @Column(nullable = false)
     private double Saldo;
 
     private double Nota;
