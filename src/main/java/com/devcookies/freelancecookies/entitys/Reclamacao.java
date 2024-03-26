@@ -2,22 +2,22 @@ package com.devcookies.freelancecookies.entitys;
 
 import jakarta.persistence.*;
 
+@Entity
 public class Reclamacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
     @ManyToOne
-    @JoinColumn(name = "Id")
-    @Column(nullable = false)
+    @JoinColumn(name = "Usuario_Id")
     private Usuario Usuario_Id;
 
     @ManyToOne
-    @JoinColumn(name = "Id")
+    @JoinColumn(name = "Transacao_Id")
     private Transacao Transacao_Id;
 
     @ManyToOne
-    @JoinColumn(name = "Id")
+    @JoinColumn(name = "DepositoSaque_Id")
     private DepositoSaque DepositoSaque_Id;
 
     @Column(nullable = false)

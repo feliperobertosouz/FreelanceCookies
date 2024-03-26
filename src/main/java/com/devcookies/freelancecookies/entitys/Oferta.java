@@ -4,14 +4,14 @@ import jakarta.persistence.*;
 
 import java.sql.Blob;
 
+@Entity
 public class Oferta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
     @ManyToOne
-    @JoinColumn(name = "Id")
-    @Column(nullable = false)
+    @JoinColumn(name = "Usuario_Id")
     private Usuario Usuario_Id;
 
     @Column(nullable = false)

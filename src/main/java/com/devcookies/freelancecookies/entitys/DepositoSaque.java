@@ -2,14 +2,14 @@ package com.devcookies.freelancecookies.entitys;
 
 import jakarta.persistence.*;
 
+@Entity
 public class DepositoSaque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
     @ManyToOne
-    @JoinColumn(name = "Id")
-    @Column(nullable = false)
+    @JoinColumn(name = "Usuario_Id")
     private Usuario Usuario_Id;
 
     @Column(nullable = false)
