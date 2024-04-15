@@ -1,2 +1,0 @@
-# FreelanceCookies
-Projeto para faculdade
