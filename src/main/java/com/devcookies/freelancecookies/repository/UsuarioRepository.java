@@ -26,18 +26,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
                           @Param("saldo") double saldo, @Param("nota") double nota,
                           @Param("avaliacoes") double avaliacoes);
 
-    @Modifying
-    @Transactional
-    @Query("UPDATE Usuario u SET u.Nome = :nome, u.Email = :email, u.Cpf = :cpf, " +
-            "u.Telefone = :telefone, u.Saldo = :saldo, u.Nota = :nota, " +
-            "u.Avaliacoes = :avaliacoes WHERE u.Id = :id")
-    void atualizarUsuario(@Param("id") int id, @Param("nome") String nome,
-                          @Param("email") String email, @Param("cpf") String cpf,
-                          @Param("telefone") String telefone, @Param("saldo") double saldo,
-                          @Param("nota") double nota, @Param("avaliacoes") double avaliacoes);
 
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM Usuario u WHERE u.Id = :id")
-    void deletarUsuarioById(@Param("id") int id);
 }
