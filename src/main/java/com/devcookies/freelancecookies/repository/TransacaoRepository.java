@@ -6,5 +6,4 @@ import java.util.List;
 
 public interface TransacaoRepository extends JpaRepository<Transacao, Integer> {
 
-    List<Transacao> findTransacoesByUsuario(int id);
 }
