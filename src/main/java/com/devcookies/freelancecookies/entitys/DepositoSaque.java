@@ -24,6 +24,26 @@ public class DepositoSaque {
     @Column(nullable = false)
     private String TempoAtual;
 
+
+    public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, String tempoAtual) {
+        Id = id;
+        Usuario_Id = usuario_Id;
+        this.alteracao = alteracao;
+        this.agencia = agencia;
+        this.conta = conta;
+        TempoAtual = tempoAtual;
+    }
+
+    public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, String tempoAtual) {
+        Usuario_Id = usuario_Id;
+        this.alteracao = alteracao;
+        this.agencia = agencia;
+        this.conta = conta;
+        TempoAtual = tempoAtual;
+    }
+
+    public DepositoSaque(){}
+
     public int getId() {
         return Id;
     }

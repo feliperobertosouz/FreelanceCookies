@@ -40,6 +40,16 @@ public class Usuario {
         Avaliacoes = avaliacoes;
     }
 
+    public Usuario( String nome, String email, String cpf, String telefone, double saldo, double nota, double avaliacoes) {
+        Nome = nome;
+        Email = email;
+        Cpf = cpf;
+        Telefone = telefone;
+        Saldo = saldo;
+        Nota = nota;
+        Avaliacoes = avaliacoes;
+    }
+
     public Usuario() {
 
     }

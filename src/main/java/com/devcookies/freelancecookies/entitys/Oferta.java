@@ -34,6 +34,44 @@ public class Oferta {
     @Column(nullable = false)
     private double TempoAtual;
 
+
+    public Oferta(int id, Usuario usuario_Id, String titulo, String texto, Blob imagem, int prazo, double preco, boolean status, double tempoAtual) {
+        Id = id;
+        Usuario_Id = usuario_Id;
+        Titulo = titulo;
+        Texto = texto;
+        Imagem = imagem;
+        Prazo = prazo;
+        Preco = preco;
+        Status = status;
+        TempoAtual = tempoAtual;
+    }
+
+    public Oferta(Usuario usuario_Id, String titulo, String texto, Blob imagem, int prazo, double preco, boolean status, double tempoAtual) {
+        Usuario_Id = usuario_Id;
+        Titulo = titulo;
+        Texto = texto;
+        Imagem = imagem;
+        Prazo = prazo;
+        Preco = preco;
+        Status = status;
+        TempoAtual = tempoAtual;
+    }
+
+    public Oferta(Usuario usuario_Id, String titulo, String texto, int prazo, double preco, boolean status, double tempoAtual) {
+        Usuario_Id = usuario_Id;
+        Titulo = titulo;
+        Texto = texto;
+        Prazo = prazo;
+        Preco = preco;
+        Status = status;
+        TempoAtual = tempoAtual;
+    }
+
+    public Oferta(){
+
+    }
+
     public int getId() {
         return Id;
     }
