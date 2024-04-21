@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/proposta")
+@RequestMapping("api/propostas")
 public class PropostaController {
 
     @Autowired
@@ -23,12 +23,13 @@ public class PropostaController {
     }
 
     @PostMapping
-    public ResponseEntity<Proposta> createProposta(@RequestBody Proposta proposta){
+    public ResponseEntity<Proposta> createProposta(@RequestBody Proposta proposta) throws Exception {
         try{
             Proposta propostaCreated = propostaService.createProposta(proposta);
             return new ResponseEntity<>(propostaCreated, HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+            throw new Exception(e);
+            //return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
         }
     }
 

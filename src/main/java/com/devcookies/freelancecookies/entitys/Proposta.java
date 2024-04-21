@@ -27,6 +27,18 @@ public class Proposta {
     @Column(nullable = false)
     private double TempoAtual;
 
+    public Proposta() {
+    }
+
+    public Proposta(Usuario usuario_Id, Oferta oferta_Id, String texto, int prazo, double preco, double tempoAtual) {
+        Usuario_Id = usuario_Id;
+        Oferta_Id = oferta_Id;
+        Texto = texto;
+        Prazo = prazo;
+        Preco = preco;
+        TempoAtual = tempoAtual;
+    }
+
     public int getId() {
         return Id;
     }
@@ -82,4 +94,7 @@ public class Proposta {
     public void setTempoAtual(double tempoAtual) {
         TempoAtual = tempoAtual;
     }
+
+
+
 }
