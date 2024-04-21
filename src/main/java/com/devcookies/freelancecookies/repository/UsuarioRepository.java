@@ -17,14 +17,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query("SELECT u FROM Usuario u WHERE u.Id = :id")
     Usuario findUsuarioById(@Param("id") int id);
 
-    @Modifying
-    @Transactional
-    @Query("INSERT INTO Usuario (Nome, Email, Cpf, Telefone, Saldo, Nota, Avaliacoes) " +
-            "VALUES (:nome, :email, :cpf, :telefone, :saldo, :nota, :avaliacoes)")
-    void cadastrarUsuario(@Param("nome") String nome, @Param("email") String email,
-                          @Param("cpf") String cpf, @Param("telefone") String telefone,
-                          @Param("saldo") double saldo, @Param("nota") double nota,
-                          @Param("avaliacoes") double avaliacoes);
 
 
 }
