@@ -8,6 +8,7 @@ public interface PropostaService {
 
 
     public List<Proposta> getAllPropostas();
+
     public Proposta getPropostaById(int id);
 
     public Proposta createProposta(Proposta oferta);

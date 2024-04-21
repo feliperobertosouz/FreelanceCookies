@@ -23,13 +23,12 @@ public class PropostaController {
     }
 
     @PostMapping
-    public ResponseEntity<Proposta> createProposta(@RequestBody Proposta proposta) throws Exception {
+    public ResponseEntity<Proposta> createProposta(@RequestBody Proposta proposta) {
         try{
             Proposta propostaCreated = propostaService.createProposta(proposta);
             return new ResponseEntity<>(propostaCreated, HttpStatus.OK);
         }catch (Exception e){
-            throw new Exception(e);
-            //return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
         }
     }
 
