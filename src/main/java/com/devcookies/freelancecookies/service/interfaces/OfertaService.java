@@ -1,7 +1,6 @@
 package com.devcookies.freelancecookies.service.interfaces;
 
 import com.devcookies.freelancecookies.entitys.Oferta;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
