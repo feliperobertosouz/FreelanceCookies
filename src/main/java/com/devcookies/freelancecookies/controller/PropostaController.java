@@ -45,7 +45,6 @@ public class PropostaController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
-//ignore
     @DeleteMapping("/{id}")
     public ResponseEntity<Proposta> deleteProposta(@PathVariable("id") int id){
         try{
