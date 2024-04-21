@@ -25,6 +25,17 @@ public class Reclamacao {
 
     private String TempoAtual;
 
+    public Reclamacao() {
+    }
+
+    public Reclamacao(Usuario usuario_Id, Transacao transacao_Id, DepositoSaque depositoSaque_Id, String texto, String tempoAtual) {
+        Usuario_Id = usuario_Id;
+        Transacao_Id = transacao_Id;
+        DepositoSaque_Id = depositoSaque_Id;
+        Texto = texto;
+        TempoAtual = tempoAtual;
+    }
+
     public int getId() {
         return Id;
     }
