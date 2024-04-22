@@ -11,7 +11,7 @@ public interface PropostaService {
 
     public Proposta getPropostaById(int id);
 
-    public Proposta createProposta(Proposta oferta);
+    public Proposta createProposta(Proposta proposta);
 
     public void deleteProposta(int id);
 

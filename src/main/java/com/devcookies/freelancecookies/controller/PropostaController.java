@@ -4,6 +4,7 @@ import com.devcookies.freelancecookies.entitys.Proposta;
 import com.devcookies.freelancecookies.service.interfaces.PropostaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

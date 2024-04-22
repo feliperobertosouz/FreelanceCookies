@@ -33,12 +33,17 @@ public class ReclamacaoController {
     }
 
     @PostMapping
-    public ResponseEntity<Reclamacao> createReclamacao(@RequestBody Reclamacao reclamacao) {
-        Reclamacao user = reclamacaoService.createReclamacao(reclamacao);
-        if (user != null){
-            return ResponseEntity.status(HttpStatus.CREATED).body(user);
-        } else{
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+    public ResponseEntity<Reclamacao> createReclamacao(@RequestBody Reclamacao reclamacao) throws Exception {
+
+        try{
+            Reclamacao user = reclamacaoService.createReclamacao(reclamacao);
+            if (user != null){
+                return ResponseEntity.status(HttpStatus.CREATED).body(user);
+            } else{
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
+        }catch (Exception e){
+            throw  new Exception(e);
         }
     }
 
