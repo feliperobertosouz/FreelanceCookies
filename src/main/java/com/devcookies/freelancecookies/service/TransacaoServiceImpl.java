@@ -56,9 +56,5 @@ public class TransacaoServiceImpl implements TransacaoService {
         return TransacaoRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public List<Transacao> getAllTransacoesOfUsuario(int id) {
-        return TransacaoRepository.findTransacoesByUsuario(id);
-    }
 
 }
