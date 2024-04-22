@@ -14,7 +14,7 @@ import java.util.List;
 public class TransacaoServiceImpl implements TransacaoService {
 
     @Autowired
-    private TransacaoRepository TransacaoRepository;
+    private TransacaoRepository transacaoRepository;
 
     @Autowired
     private UsuarioRepository usuarioRepository;
@@ -27,7 +27,7 @@ public class TransacaoServiceImpl implements TransacaoService {
         transacao.setPagador_Id(pagadorSearched);
         transacao.setRecebedor_Id(recebedorSearched);
         try{
-            Transacao transacaoCreated = TransacaoRepository.save(transacao);
+            Transacao transacaoCreated = transacaoRepository.save(transacao);
             pagadorSearched.setSaldo(pagadorSearched.getSaldo() - transacao.getTransacao());
             usuarioRepository.save(pagadorSearched);
             recebedorSearched.setSaldo(recebedorSearched.getSaldo() + transacao.getTransacao());
@@ -47,13 +47,18 @@ public class TransacaoServiceImpl implements TransacaoService {
     }
 
     @Override
+    public List<Transacao> getAllTransacoesOfUsuario(int id) {
+        return transacaoRepository.findAll();
+    }
+
+    @Override
     public List<Transacao> getAllTransacoes() {
-        return TransacaoRepository.findAll();
+        return transacaoRepository.findAll();
     }
 
     @Override
     public Transacao getTransacaoById(int id) {
-        return TransacaoRepository.findById(id).orElse(null);
+        return transacaoRepository.findById(id).orElse(null);
     }
 
 
