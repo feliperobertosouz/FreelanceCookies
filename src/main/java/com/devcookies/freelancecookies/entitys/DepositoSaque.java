@@ -1,6 +1,7 @@
 package com.devcookies.freelancecookies.entitys;
 
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 public class DepositoSaque {
@@ -22,10 +23,10 @@ public class DepositoSaque {
     private int conta;
 
     @Column(nullable = false)
-    private String TempoAtual;
+    private Date TempoAtual;
 
 
-    public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, String tempoAtual) {
+    public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
         Id = id;
         Usuario_Id = usuario_Id;
         this.alteracao = alteracao;
@@ -34,7 +35,7 @@ public class DepositoSaque {
         TempoAtual = tempoAtual;
     }
 
-    public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, String tempoAtual) {
+    public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
         Usuario_Id = usuario_Id;
         this.alteracao = alteracao;
         this.agencia = agencia;
@@ -84,11 +85,9 @@ public class DepositoSaque {
         this.conta = conta;
     }
 
-    public String getTempoAtual() {
+    public Date getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(String tempoAtual) {
-        TempoAtual = tempoAtual;
-    }
+    public void setTempoAtual(Date tempoAtual) {TempoAtual = tempoAtual;}
 }

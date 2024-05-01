@@ -1,6 +1,7 @@
 package com.devcookies.freelancecookies.entitys;
 
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Transacao {
@@ -21,7 +22,7 @@ public class Transacao {
     private Oferta Oferta_Id;
 
     @Column(nullable = false)
-    private String TempoAtual;
+    private Date TempoAtual;
 
     @Column(nullable = false)
     private double Transacao;
@@ -58,11 +59,11 @@ public class Transacao {
         Oferta_Id = oferta_Id;
     }
 
-    public String getTempoAtual() {
+    public Date getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(String tempoAtual) {
+    public void setTempoAtual(Date tempoAtual) {
         TempoAtual = tempoAtual;
     }
 

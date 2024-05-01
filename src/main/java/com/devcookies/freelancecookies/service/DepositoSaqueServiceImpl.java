@@ -32,7 +32,7 @@ public class DepositoSaqueServiceImpl implements DepositoService {
         }catch(Exception e){
             System.out.println("ERRO AO TENTAR CRIAR DEPOSITO");
             DepositoSaque depositoError = new DepositoSaque();
-            depositoError.setTempoAtual("Problema eo criar usuario");
+            depositoError.setTempoAtual(null);
             return depositoError;
         }
     }
