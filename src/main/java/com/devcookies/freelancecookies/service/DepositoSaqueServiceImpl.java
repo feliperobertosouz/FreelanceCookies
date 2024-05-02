@@ -20,10 +20,10 @@ public class DepositoSaqueServiceImpl implements DepositoService {
     private UsuarioRepository usuarioRepository;
     @Override
     public DepositoSaque createDepositoSaque(DepositoSaque depositoSaque) {
-        Usuario usuarioSearched = usuarioRepository.findUsuarioById(depositoSaque.getUsuario_Id().getId());
+        Usuario usuarioSearched = usuarioRepository.findUsuarioById(depositoSaque.getUsuario().getId());
         if(usuarioSearched == null)
             return null;
-        depositoSaque.setUsuario_Id(usuarioSearched);
+        depositoSaque.setUsuario(usuarioSearched);
         try{
             DepositoSaque depositoCreated = depositoSaqueRepository.save(depositoSaque);
             usuarioSearched.setSaldo(usuarioSearched.getSaldo() + depositoSaque.getAlteracao());

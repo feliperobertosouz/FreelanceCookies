@@ -11,11 +11,11 @@ public class Reclamacao {
 
     @ManyToOne
     @JoinColumn(name = "Usuario_Id")
-    private Usuario Usuario_Id;
+    private Usuario Usuario;
 
     @ManyToOne
     @JoinColumn(name = "UsuarioReclamado_Id")
-    private Usuario UsuarioReclamado_Id;
+    private Usuario UsuarioReclamado;
 
     @Column(nullable = false)
     private String Texto;
@@ -30,20 +30,20 @@ public class Reclamacao {
         Id = id;
     }
 
-    public Usuario getUsuario_Id() {
-        return Usuario_Id;
+    public Usuario getUsuario() {
+        return Usuario;
     }
 
-    public void setUsuario_Id(Usuario usuario_Id) {
-        Usuario_Id = usuario_Id;
+    public void setUsuario(Usuario usuario_Id) {
+        Usuario = usuario_Id;
     }
 
-    public Usuario getUsuarioReclamado_Id() {
-        return UsuarioReclamado_Id;
+    public Usuario getUsuarioReclamado() {
+        return UsuarioReclamado;
     }
 
-    public void setUsuarioReclamado_Id(Usuario usuarioReclamado_Id) {
-        UsuarioReclamado_Id = usuarioReclamado_Id;
+    public void setUsuarioReclamado(Usuario usuarioReclamado_Id) {
+        UsuarioReclamado = usuarioReclamado_Id;
     }
 
     public String getTexto() {

@@ -11,7 +11,7 @@ public class Oferta {
 
     @ManyToOne
     @JoinColumn(name = "Usuario_Id")
-    private Usuario Usuario_Id;
+    private Usuario Usuario;
 
     @Column(nullable = false)
     private String Titulo;
@@ -36,7 +36,7 @@ public class Oferta {
 
     public Oferta(int id, Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, Date tempoAtual) {
         Id = id;
-        Usuario_Id = usuario_Id;
+        Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
         Imagem = imagem;
@@ -47,7 +47,7 @@ public class Oferta {
     }
 
     public Oferta(Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, Date tempoAtual) {
-        Usuario_Id = usuario_Id;
+        Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
         Imagem = imagem;
@@ -58,7 +58,7 @@ public class Oferta {
     }
 
     public Oferta(Usuario usuario_Id, String titulo, String texto, int prazo, double preco, boolean status, Date tempoAtual) {
-        Usuario_Id = usuario_Id;
+        Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
         Prazo = prazo;
@@ -79,12 +79,12 @@ public class Oferta {
         Id = id;
     }
 
-    public Usuario getUsuario_Id() {
-        return Usuario_Id;
+    public Usuario getUsuario() {
+        return Usuario;
     }
 
-    public void setUsuario_Id(Usuario usuario_Id) {
-        this.Usuario_Id = usuario_Id;
+    public void setUsuario(Usuario usuario_Id) {
+        this.Usuario = usuario_Id;
     }
 
     public String getTitulo() {

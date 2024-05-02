@@ -11,15 +11,15 @@ public class Transacao {
 
     @ManyToOne
     @JoinColumn(name = "Pagador_Id")
-    private Usuario Pagador_Id;
+    private Usuario Pagador;
 
     @ManyToOne
     @JoinColumn(name = "Recebedor_Id")
-    private Usuario Recebedor_Id;
+    private Usuario Recebedor;
 
     @ManyToOne
     @JoinColumn(name = "Oferta_Id")
-    private Oferta Oferta_Id;
+    private Oferta Oferta;
 
     @Column(nullable = false)
     private Date TempoAtual;
@@ -35,28 +35,28 @@ public class Transacao {
         Id = id;
     }
 
-    public Usuario getPagador_Id() {
-        return Pagador_Id;
+    public Usuario getPagador() {
+        return Pagador;
     }
 
-    public void setPagador_Id(Usuario pagador_Id) {
-        Pagador_Id = pagador_Id;
+    public void setPagador(Usuario pagador_Id) {
+        Pagador = pagador_Id;
     }
 
-    public Usuario getRecebedor_Id() {
-        return Recebedor_Id;
+    public Usuario getRecebedor() {
+        return Recebedor;
     }
 
-    public void setRecebedor_Id(Usuario recebedor_Id) {
-        Recebedor_Id = recebedor_Id;
+    public void setRecebedor(Usuario recebedor_Id) {
+        Recebedor = recebedor_Id;
     }
 
-    public Oferta getOferta_Id() {
-        return Oferta_Id;
+    public Oferta getOferta() {
+        return Oferta;
     }
 
-    public void setOferta_Id(Oferta oferta_Id) {
-        Oferta_Id = oferta_Id;
+    public void setOferta(Oferta oferta_Id) {
+        Oferta = oferta_Id;
     }
 
     public Date getTempoAtual() {

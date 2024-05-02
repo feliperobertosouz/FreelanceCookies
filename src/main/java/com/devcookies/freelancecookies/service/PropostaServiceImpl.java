@@ -34,11 +34,11 @@ public class PropostaServiceImpl implements PropostaService {
 
     @Override
     public Proposta createProposta(Proposta proposta) {
-        Usuario usuario = usuarioRepository.findUsuarioById(proposta.getUsuario_Id().getId());
-        Oferta oferta = ofertaRepository.findOfertaById(proposta.getOferta_Id().getId());
+        Usuario usuario = usuarioRepository.findUsuarioById(proposta.getUsuario().getId());
+        Oferta oferta = ofertaRepository.findOfertaById(proposta.getOferta().getId());
         if(usuario == null || oferta == null)
             return null;
-        proposta.setUsuario_Id(usuario);
+        proposta.setUsuario(usuario);
         return propostaRepository.save(proposta);
     }
 

@@ -11,7 +11,7 @@ public class DepositoSaque {
 
     @ManyToOne
     @JoinColumn(name = "Usuario_Id")
-    private Usuario Usuario_Id;
+    private Usuario Usuario;
 
     @Column(nullable = false)
     private double alteracao;
@@ -28,7 +28,7 @@ public class DepositoSaque {
 
     public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
         Id = id;
-        Usuario_Id = usuario_Id;
+        Usuario = usuario_Id;
         this.alteracao = alteracao;
         this.agencia = agencia;
         this.conta = conta;
@@ -36,7 +36,7 @@ public class DepositoSaque {
     }
 
     public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
-        Usuario_Id = usuario_Id;
+        Usuario = usuario_Id;
         this.alteracao = alteracao;
         this.agencia = agencia;
         this.conta = conta;
@@ -53,12 +53,12 @@ public class DepositoSaque {
         Id = id;
     }
 
-    public Usuario getUsuario_Id() {
-        return Usuario_Id;
+    public Usuario getUsuario() {
+        return Usuario;
     }
 
-    public void setUsuario_Id(Usuario usuario_Id) {
-        Usuario_Id = usuario_Id;
+    public void setUsuario(Usuario usuario_Id) {
+        Usuario = usuario_Id;
     }
 
     public double getAlteracao() {

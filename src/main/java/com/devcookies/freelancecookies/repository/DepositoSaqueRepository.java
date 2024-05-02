@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface DepositoSaqueRepository extends JpaRepository<DepositoSaque, Integer> {
 
-    @Query("SELECT d FROM DepositoSaque d WHERE d.Usuario_Id.Id = :id")
+    @Query("SELECT d FROM DepositoSaque d WHERE d.Usuario.Id = :id")
     public List<DepositoSaque> findDepositosByUsuario(@Param("id") int id);
 
 }

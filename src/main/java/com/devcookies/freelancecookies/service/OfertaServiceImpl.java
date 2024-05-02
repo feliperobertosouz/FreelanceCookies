@@ -30,10 +30,10 @@ public class OfertaServiceImpl implements OfertaService {
 
     @Override
     public Oferta createOferta(Oferta oferta) {
-        Usuario usuario = usuarioRepository.findUsuarioById(oferta.getUsuario_Id().getId());
+        Usuario usuario = usuarioRepository.findUsuarioById(oferta.getUsuario().getId());
         if(usuario == null)
             return null;
-        oferta.setUsuario_Id(usuario);
+        oferta.setUsuario(usuario);
         return ofertaRepository.save(oferta);
     }
 
