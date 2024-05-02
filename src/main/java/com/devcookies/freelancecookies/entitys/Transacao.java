@@ -32,9 +32,9 @@ public class Transacao {
     }
 
     public Transacao(Usuario pagador_Id, Usuario recebedor_Id, Oferta oferta_Id, String tempoAtual, double transacao) {
-        Pagador_Id = pagador_Id;
-        Recebedor_Id = recebedor_Id;
-        Oferta_Id = oferta_Id;
+        Pagador = pagador_Id;
+        Recebedor = recebedor_Id;
+        Oferta = oferta_Id;
         TempoAtual = tempoAtual;
         Transacao = transacao;
     }
