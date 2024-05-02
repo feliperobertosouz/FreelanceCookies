@@ -14,12 +14,8 @@ public class Reclamacao {
     private Usuario Usuario_Id;
 
     @ManyToOne
-    @JoinColumn(name = "Transacao_Id")
-    private Transacao Transacao_Id;
-
-    @ManyToOne
-    @JoinColumn(name = "DepositoSaque_Id")
-    private DepositoSaque DepositoSaque_Id;
+    @JoinColumn(name = "UsuarioReclamado_Id")
+    private Usuario UsuarioReclamado_Id;
 
     @Column(nullable = false)
     private String Texto;
@@ -42,20 +38,12 @@ public class Reclamacao {
         Usuario_Id = usuario_Id;
     }
 
-    public Transacao getTransacao_Id() {
-        return Transacao_Id;
+    public Usuario getUsuarioReclamado_Id() {
+        return UsuarioReclamado_Id;
     }
 
-    public void setTransacao_Id(Transacao transacao_Id) {
-        Transacao_Id = transacao_Id;
-    }
-
-    public DepositoSaque getDepositoSaque_Id() {
-        return DepositoSaque_Id;
-    }
-
-    public void setDepositoSaque_Id(DepositoSaque depositoSaque_Id) {
-        DepositoSaque_Id = depositoSaque_Id;
+    public void setUsuarioReclamado_Id(Usuario usuarioReclamado_Id) {
+        UsuarioReclamado_Id = usuarioReclamado_Id;
     }
 
     public String getTexto() {
