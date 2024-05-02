@@ -1,6 +1,7 @@
 package com.devcookies.freelancecookies.entitys;
 
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 public class DepositoSaque {
@@ -10,7 +11,7 @@ public class DepositoSaque {
 
     @ManyToOne
     @JoinColumn(name = "Usuario_Id")
-    private Usuario Usuario_Id;
+    private Usuario Usuario;
 
     @Column(nullable = false)
     private double alteracao;
@@ -22,20 +23,21 @@ public class DepositoSaque {
     private int conta;
 
     @Column(nullable = false)
-    private String TempoAtual;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date TempoAtual;
 
 
-    public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, String tempoAtual) {
+    public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
         Id = id;
-        Usuario_Id = usuario_Id;
+        Usuario = usuario_Id;
         this.alteracao = alteracao;
         this.agencia = agencia;
         this.conta = conta;
         TempoAtual = tempoAtual;
     }
 
-    public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, String tempoAtual) {
-        Usuario_Id = usuario_Id;
+    public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
+        Usuario = usuario_Id;
         this.alteracao = alteracao;
         this.agencia = agencia;
         this.conta = conta;
@@ -52,12 +54,12 @@ public class DepositoSaque {
         Id = id;
     }
 
-    public Usuario getUsuario_Id() {
-        return Usuario_Id;
+    public Usuario getUsuario() {
+        return Usuario;
     }
 
-    public void setUsuario_Id(Usuario usuario_Id) {
-        Usuario_Id = usuario_Id;
+    public void setUsuario(Usuario usuario_Id) {
+        Usuario = usuario_Id;
     }
 
     public double getAlteracao() {
@@ -84,11 +86,9 @@ public class DepositoSaque {
         this.conta = conta;
     }
 
-    public String getTempoAtual() {
+    public Date getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(String tempoAtual) {
-        TempoAtual = tempoAtual;
-    }
+    public void setTempoAtual(Date tempoAtual) {TempoAtual = tempoAtual;}
 }

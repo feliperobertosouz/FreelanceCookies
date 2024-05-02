@@ -1,6 +1,7 @@
 package com.devcookies.freelancecookies.entitys;
 
 import jakarta.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Proposta {
@@ -10,7 +11,7 @@ public class Proposta {
 
     @ManyToOne
     @JoinColumn(name = "Usuario_Id")
-    private Usuario Usuario_Id;
+    private Usuario Usuario;
 
     @ManyToOne
     @JoinColumn(name = "Oferta_Id")
@@ -24,14 +25,16 @@ public class Proposta {
     @Column(nullable = false)
     private double Preco;
 
+
     @Column(nullable = false)
-    private double TempoAtual;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date TempoAtual;
 
     public Proposta() {
     }
 
-    public Proposta(Usuario usuario_Id, Oferta oferta_Id, String texto, int prazo, double preco, double tempoAtual) {
-        Usuario_Id = usuario_Id;
+    public Proposta(Usuario usuario_Id, Oferta oferta_Id, String texto, int prazo, double preco, Date tempoAtual) {
+        Usuario = usuario_Id;
         Oferta_Id = oferta_Id;
         Texto = texto;
         Prazo = prazo;
@@ -47,19 +50,19 @@ public class Proposta {
         Id = id;
     }
 
-    public Usuario getUsuario_Id() {
-        return Usuario_Id;
+    public Usuario getUsuario() {
+        return Usuario;
     }
 
-    public void setUsuario_Id(Usuario usuario_Id) {
-        this.Usuario_Id = usuario_Id;
+    public void setUsuario(Usuario usuario_Id) {
+        this.Usuario = usuario_Id;
     }
 
-    public Oferta getOferta_Id() {
+    public Oferta getOferta() {
         return Oferta_Id;
     }
 
-    public void setOferta_Id(Oferta oferta_Id) {
+    public void setOferta(Oferta oferta_Id) {
         this.Oferta_Id = oferta_Id;
     }
 
@@ -87,11 +90,9 @@ public class Proposta {
         Preco = preco;
     }
 
-    public double getTempoAtual() {
-        return TempoAtual;
-    }
+    public Date getTempoAtual() {return TempoAtual;}
 
-    public void setTempoAtual(double tempoAtual) {
+    public void setTempoAtual(Date tempoAtual) {
         TempoAtual = tempoAtual;
     }
 

@@ -1,8 +1,7 @@
 package com.devcookies.freelancecookies.entitys;
 
 import jakarta.persistence.*;
-
-import java.sql.Blob;
+import java.util.Date;
 
 @Entity
 public class Oferta {
@@ -12,7 +11,7 @@ public class Oferta {
 
     @ManyToOne
     @JoinColumn(name = "Usuario_Id")
-    private Usuario Usuario_Id;
+    private Usuario Usuario;
 
     @Column(nullable = false)
     private String Titulo;
@@ -20,7 +19,7 @@ public class Oferta {
     @Column(nullable = false)
     private String Texto;
 
-    private Blob Imagem;
+    private String Imagem;
 
     @Column(nullable = false)
     private int Prazo;
@@ -32,12 +31,13 @@ public class Oferta {
     private boolean Status;
 
     @Column(nullable = false)
-    private double TempoAtual;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date TempoAtual;
 
 
-    public Oferta(int id, Usuario usuario_Id, String titulo, String texto, Blob imagem, int prazo, double preco, boolean status, double tempoAtual) {
+    public Oferta(int id, Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, Date tempoAtual) {
         Id = id;
-        Usuario_Id = usuario_Id;
+        Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
         Imagem = imagem;
@@ -47,8 +47,8 @@ public class Oferta {
         TempoAtual = tempoAtual;
     }
 
-    public Oferta(Usuario usuario_Id, String titulo, String texto, Blob imagem, int prazo, double preco, boolean status, double tempoAtual) {
-        Usuario_Id = usuario_Id;
+    public Oferta(Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, Date tempoAtual) {
+        Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
         Imagem = imagem;
@@ -58,8 +58,8 @@ public class Oferta {
         TempoAtual = tempoAtual;
     }
 
-    public Oferta(Usuario usuario_Id, String titulo, String texto, int prazo, double preco, boolean status, double tempoAtual) {
-        Usuario_Id = usuario_Id;
+    public Oferta(Usuario usuario_Id, String titulo, String texto, int prazo, double preco, boolean status, Date tempoAtual) {
+        Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
         Prazo = prazo;
@@ -80,12 +80,12 @@ public class Oferta {
         Id = id;
     }
 
-    public Usuario getUsuario_Id() {
-        return Usuario_Id;
+    public Usuario getUsuario() {
+        return Usuario;
     }
 
-    public void setUsuario_Id(Usuario usuario_Id) {
-        this.Usuario_Id = usuario_Id;
+    public void setUsuario(Usuario usuario_Id) {
+        this.Usuario = usuario_Id;
     }
 
     public String getTitulo() {
@@ -104,11 +104,11 @@ public class Oferta {
         Texto = texto;
     }
 
-    public Blob getImagem() {
+    public String getImagem() {
         return Imagem;
     }
 
-    public void setImagem(Blob imagem) {
+    public void setImagem(String imagem) {
         Imagem = imagem;
     }
 
@@ -136,11 +136,11 @@ public class Oferta {
         Status = status;
     }
 
-    public double getTempoAtual() {
+    public Date getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(double tempoAtual) {
+    public void setTempoAtual(Date tempoAtual) {
         TempoAtual = tempoAtual;
     }
 }
