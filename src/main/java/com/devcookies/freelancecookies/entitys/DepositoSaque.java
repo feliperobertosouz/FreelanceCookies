@@ -23,6 +23,7 @@ public class DepositoSaque {
     private int conta;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date TempoAtual;
 
 

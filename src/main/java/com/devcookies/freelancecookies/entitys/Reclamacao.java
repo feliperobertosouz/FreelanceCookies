@@ -20,6 +20,7 @@ public class Reclamacao {
     @Column(nullable = false)
     private String Texto;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date TempoAtual;
 
     public int getId() {

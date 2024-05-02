@@ -22,6 +22,7 @@ public class Transacao {
     private Oferta Oferta;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date TempoAtual;
 
     @Column(nullable = false)

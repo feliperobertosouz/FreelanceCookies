@@ -31,6 +31,7 @@ public class Oferta {
     private boolean Status;
 
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date TempoAtual;
 
 

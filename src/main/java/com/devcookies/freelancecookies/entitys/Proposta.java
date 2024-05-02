@@ -25,7 +25,9 @@ public class Proposta {
     @Column(nullable = false)
     private double Preco;
 
+
     @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date TempoAtual;
 
     public Proposta() {
