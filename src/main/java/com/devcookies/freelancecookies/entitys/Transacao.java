@@ -31,7 +31,7 @@ public class Transacao {
     public Transacao() {
     }
 
-    public Transacao(Usuario pagador_Id, Usuario recebedor_Id, Oferta oferta_Id, String tempoAtual, double transacao) {
+    public Transacao(Usuario pagador_Id, Usuario recebedor_Id, Oferta oferta_Id, Date tempoAtual, double transacao) {
         Pagador = pagador_Id;
         Recebedor = recebedor_Id;
         Oferta = oferta_Id;

@@ -26,10 +26,9 @@ public class Reclamacao {
     public Reclamacao() {
     }
 
-    public Reclamacao(Usuario usuario_Id, Transacao transacao_Id, DepositoSaque depositoSaque_Id, String texto, String tempoAtual) {
+    public Reclamacao(Usuario usuario_Id, Transacao transacao_Id, DepositoSaque depositoSaque_Id, String texto, Date tempoAtual, Usuario UsuarioReclamado_Id) {
         Usuario = usuario_Id;
-        Transacao = transacao_Id;
-        DepositoSaque = depositoSaque_Id;
+        UsuarioReclamado =  UsuarioReclamado_Id;
         Texto = texto;
         TempoAtual = tempoAtual;
     }
