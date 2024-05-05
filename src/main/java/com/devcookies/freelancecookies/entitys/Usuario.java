@@ -23,28 +23,32 @@ public class Usuario {
     private String Telefone;
 
     @Column(nullable = false)
+    private String Senha;
+    @Column(nullable = false)
     private double Saldo;
 
     private double Nota;
 
     private double Avaliacoes;
 
-    public Usuario(int id, String nome, String email, String cpf, String telefone, double saldo, double nota, double avaliacoes) {
+    public Usuario(int id, String nome, String email, String cpf, String telefone, String senha ,double saldo, double nota, double avaliacoes) {
         Id = id;
         Nome = nome;
         Email = email;
         Cpf = cpf;
         Telefone = telefone;
+        Senha = senha;
         Saldo = saldo;
         Nota = nota;
         Avaliacoes = avaliacoes;
     }
 
-    public Usuario( String nome, String email, String cpf, String telefone, double saldo, double nota, double avaliacoes) {
+    public Usuario( String nome, String email, String cpf, String telefone, String senha ,double saldo, double nota, double avaliacoes) {
         Nome = nome;
         Email = email;
         Cpf = cpf;
         Telefone = telefone;
+        Senha = senha;
         Saldo = saldo;
         Nota = nota;
         Avaliacoes = avaliacoes;
@@ -92,6 +96,14 @@ public class Usuario {
 
     public void setTelefone(String telefone) {
         Telefone = telefone;
+    }
+
+    public String getSenha() {
+        return Senha;
+    }
+
+    public void setSenha(String senha) {
+        Senha = senha;
     }
 
     public double getSaldo() {
