@@ -21,12 +21,12 @@ public class TransacaoServiceImpl implements TransacaoService {
     private UsuarioRepository usuarioRepository;
     @Override
     public Transacao createTransacao(Transacao transacao) {
-        Usuario pagadorSearched = usuarioRepository.findUsuarioById(transacao.getPagador_Id().getId());
-        Usuario recebedorSearched = usuarioRepository.findUsuarioById(transacao.getRecebedor_Id().getId());
+        Usuario pagadorSearched = usuarioRepository.findUsuarioById(transacao.getPagador().getId());
+        Usuario recebedorSearched = usuarioRepository.findUsuarioById(transacao.getRecebedor().getId());
         if(recebedorSearched == null || pagadorSearched == null)
             return null;
-        transacao.setPagador_Id(pagadorSearched);
-        transacao.setRecebedor_Id(recebedorSearched);
+        transacao.setPagador(pagadorSearched);
+        transacao.setRecebedor(recebedorSearched);
         try{
             Transacao transacaoCreated = transacaoRepository.save(transacao);
             pagadorSearched.setSaldo(pagadorSearched.getSaldo() - transacao.getTransacao());
@@ -37,7 +37,6 @@ public class TransacaoServiceImpl implements TransacaoService {
         }catch(Exception e){
             System.out.println("ERRO AO TENTAR CRIAR TRANSACAO");
             Transacao transacaoError = new Transacao();
-            transacaoError.setTempoAtual("Problema ao criar usuario");
             return transacaoError;
         }
     }

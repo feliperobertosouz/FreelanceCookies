@@ -45,15 +45,12 @@ public class ReclamacaoServiceImpl implements ReclamacaoService {
 
     @Override
     public Reclamacao createReclamacao(Reclamacao reclamacao) {
-        Usuario usuario = usuarioRepository.findUsuarioById(reclamacao.getUsuario_Id().getId());
-        DepositoSaque deposito = depositoSaqueRepository.findById(reclamacao.getDepositoSaque_Id().getId()).orElse(null);
-        Transacao transacao = transacaoRepository.findById(reclamacao.getTransacao_Id().getId()).orElse(null);
-
-        if(usuario == null || deposito == null || transacao == null)
+        Usuario usuario = usuarioRepository.findUsuarioById(reclamacao.getUsuario().getId());
+        Usuario usuarioReclamado = usuarioRepository.findUsuarioById(reclamacao.getUsuarioReclamado().getId());
+        if(usuario == null || usuarioReclamado == null)
             return null;
-        reclamacao.setUsuario_Id(usuario);
-        reclamacao.setDepositoSaque_Id(deposito);
-        reclamacao.setTransacao_Id(transacao);
+        reclamacao.setUsuario(usuario);
+        reclamacao.setUsuarioReclamado(usuarioReclamado);
         return reclamacaoRepository.save(reclamacao);
     }
 
