@@ -7,6 +7,7 @@ import com.devcookies.freelancecookies.repository.UsuarioRepository;
 import com.devcookies.freelancecookies.service.interfaces.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.devcookies.freelancecookies.dto.TransacaoDTO;
 
 import java.util.List;
 
