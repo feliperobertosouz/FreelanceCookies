@@ -1,5 +1,7 @@
 package com.devcookies.freelancecookies.dto;
 
+import com.devcookies.freelancecookies.entitys.Reclamacao;
+
 import java.util.Date;
 
 public class ReclamacaoDTO {
@@ -18,6 +20,14 @@ public class ReclamacaoDTO {
         this.usuarioReclamadoId = usuarioReclamadoId;
         this.texto = texto;
         this.tempoAtual = tempoAtual;
+    }
+
+    public ReclamacaoDTO(Reclamacao reclamacao){
+        this.id = reclamacao.getId();
+        this.usuarioId = reclamacao.getUsuario().getId();
+        this.usuarioReclamadoId = reclamacao.getUsuarioReclamado().getId();
+        this.texto = reclamacao.getTexto();
+        this.tempoAtual = reclamacao.getTempoAtual();
     }
 
 

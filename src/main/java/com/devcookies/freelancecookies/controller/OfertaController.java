@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.controller;
 
+import com.devcookies.freelancecookies.dto.OfertaDTO;
 import com.devcookies.freelancecookies.entitys.Oferta;
 import com.devcookies.freelancecookies.service.interfaces.OfertaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class OfertaController {
     }
 
     @PostMapping
-    public ResponseEntity<Oferta> createOferta(@RequestBody Oferta oferta){
+    public ResponseEntity<OfertaDTO> createOferta(@RequestBody OfertaDTO oferta){
         try{
-            Oferta ofertaCreated = ofertaService.createOferta(oferta);
+            OfertaDTO ofertaCreated = ofertaService.createOferta(oferta);
             return new ResponseEntity<>(ofertaCreated, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);

@@ -1,5 +1,7 @@
 package com.devcookies.freelancecookies.dto;
 
+import com.devcookies.freelancecookies.entitys.Oferta;
+
 import java.util.Date;
 
 public class OfertaDTO {
@@ -26,6 +28,18 @@ public class OfertaDTO {
         this.preco = preco;
         this.status = status;
         this.tempoAtual = tempoAtual;
+    }
+
+    public OfertaDTO(Oferta oferta){
+        this.id = oferta.getId();
+        this.usuarioId = oferta.getUsuario().getId();
+        this.titulo = oferta.getTitulo();
+        this.texto = oferta.getTexto();
+        this.imagem = oferta.getImagem();
+        this.prazo = oferta.getPrazo();
+        this.preco = oferta.getPreco();
+        this.status = oferta.isStatus();
+        this.tempoAtual = oferta.getTempoAtual();
     }
 
     public int getId() {

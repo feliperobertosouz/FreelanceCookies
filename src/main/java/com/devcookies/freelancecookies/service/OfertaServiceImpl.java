@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.service;
 
+import com.devcookies.freelancecookies.dto.OfertaDTO;
 import com.devcookies.freelancecookies.entitys.Oferta;
 import com.devcookies.freelancecookies.entitys.Usuario;
 import com.devcookies.freelancecookies.repository.OfertaRepository;
@@ -29,12 +30,12 @@ public class OfertaServiceImpl implements OfertaService {
     }
 
     @Override
-    public Oferta createOferta(Oferta oferta) {
-        Usuario usuario = usuarioRepository.findUsuarioById(oferta.getUsuario().getId());
+    public OfertaDTO createOferta(OfertaDTO oferta) {
+        Usuario usuario = usuarioRepository.findUsuarioById(oferta.getUsuarioId());
         if(usuario == null)
             return null;
-        oferta.setUsuario(usuario);
-        return ofertaRepository.save(oferta);
+        Oferta createOferta = new Oferta(oferta, usuario);
+        return new OfertaDTO(ofertaRepository.save(createOferta));
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.devcookies.freelancecookies.entitys;
 
+import com.devcookies.freelancecookies.controller.UsuarioController;
+import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -31,6 +33,14 @@ public class Reclamacao {
         UsuarioReclamado =  UsuarioReclamado_Id;
         Texto = texto;
         TempoAtual = tempoAtual;
+    }
+
+    public Reclamacao(ReclamacaoDTO reclamacaoDTO, Usuario usuario){
+        Id = reclamacaoDTO.getId();
+
+        Usuario = usuario;
+        Texto = reclamacaoDTO.getTexto();
+        TempoAtual = reclamacaoDTO.getTempoAtual();
     }
 
     public int getId() {
@@ -65,8 +75,8 @@ public class Reclamacao {
         Texto = texto;
     }
 
-    public String getTempoAtual() {
-        return TempoAtual.toString();
+    public Date getTempoAtual() {
+        return TempoAtual;
     }
 
     public void setTempoAtual(Date tempoAtual) {TempoAtual = tempoAtual;}

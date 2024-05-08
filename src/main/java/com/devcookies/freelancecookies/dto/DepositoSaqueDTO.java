@@ -1,5 +1,7 @@
 package com.devcookies.freelancecookies.dto;
 
+import com.devcookies.freelancecookies.entitys.DepositoSaque;
+
 import java.util.Date;
 
 public class DepositoSaqueDTO {
@@ -17,6 +19,10 @@ public class DepositoSaqueDTO {
         this.agencia = agencia;
         this.conta = conta;
         this.tempoAtual = tempoAtual;
+    }
+
+    public DepositoSaqueDTO(DepositoSaque depositoSaque){
+        this.id = depositoSaque.getId();
     }
 
 
