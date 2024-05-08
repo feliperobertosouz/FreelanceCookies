@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.entitys;
 
+import com.devcookies.freelancecookies.dto.TransacaoDTO;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -37,6 +38,15 @@ public class Transacao {
         Oferta = oferta_Id;
         TempoAtual = tempoAtual;
         Transacao = transacao;
+    }
+
+    public Transacao(TransacaoDTO transacaoDTO, Oferta oferta, Usuario recebedor, Usuario pagador){
+        Id = transacaoDTO.getId();
+        Oferta = oferta;
+        Pagador = pagador;
+        Recebedor = recebedor;
+        TempoAtual = transacaoDTO.getTempoAtual();
+        Transacao = transacaoDTO.getTransacao();
     }
 
     public int getId() {
