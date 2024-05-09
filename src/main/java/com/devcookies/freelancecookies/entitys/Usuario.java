@@ -55,8 +55,9 @@ public class Usuario {
     }
 
     public Usuario() {
-
     }
+
+    
 
     public int getId() {
         return Id;
