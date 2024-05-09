@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.controller;
 
+import com.devcookies.freelancecookies.dto.DepositoSaqueDTO;
 import com.devcookies.freelancecookies.entitys.DepositoSaque;
 import com.devcookies.freelancecookies.service.interfaces.DepositoService;
 import jakarta.websocket.server.PathParam;
@@ -37,9 +38,9 @@ public class DepositoController {
     }
 
     @PostMapping
-    public ResponseEntity<DepositoSaque> createDepositoSaque(@RequestBody DepositoSaque depositoSaque){
+    public ResponseEntity<DepositoSaqueDTO> createDepositoSaque(@RequestBody DepositoSaqueDTO depositoSaque){
         try{
-            DepositoSaque depositoCreated = depositoService.createDepositoSaque(depositoSaque);
+            DepositoSaqueDTO depositoCreated = depositoService.createDepositoSaque(depositoSaque);
             return new ResponseEntity<>(depositoCreated, HttpStatus.CREATED);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

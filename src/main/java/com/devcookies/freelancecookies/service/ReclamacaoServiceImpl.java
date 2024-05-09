@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.service;
 
+import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import com.devcookies.freelancecookies.entitys.DepositoSaque;
 import com.devcookies.freelancecookies.entitys.Reclamacao;
 import com.devcookies.freelancecookies.entitys.Transacao;
@@ -44,14 +45,15 @@ public class ReclamacaoServiceImpl implements ReclamacaoService {
     }
 
     @Override
-    public Reclamacao createReclamacao(Reclamacao reclamacao) {
-        Usuario usuario = usuarioRepository.findUsuarioById(reclamacao.getUsuario().getId());
-        Usuario usuarioReclamado = usuarioRepository.findUsuarioById(reclamacao.getUsuarioReclamado().getId());
+    public ReclamacaoDTO createReclamacao(ReclamacaoDTO reclamacao) {
+        Usuario usuario = usuarioRepository.findUsuarioById(reclamacao.getUsuarioId());
+        Usuario usuarioReclamado = usuarioRepository.findUsuarioById(reclamacao.getUsuarioReclamadoId());
         if(usuario == null || usuarioReclamado == null)
             return null;
-        reclamacao.setUsuario(usuario);
-        reclamacao.setUsuarioReclamado(usuarioReclamado);
-        return reclamacaoRepository.save(reclamacao);
+        Reclamacao createReclamacao = new Reclamacao(reclamacao, usuario, usuarioReclamado);
+        reclamacao.setUsuarioId(usuario.getId());
+        reclamacao.setUsuarioReclamadoId(usuarioReclamado.getId());
+        return new ReclamacaoDTO(reclamacaoRepository.save(createReclamacao));
     }
 
     @Override

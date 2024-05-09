@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.service;
 
+import com.devcookies.freelancecookies.dto.DepositoSaqueDTO;
 import com.devcookies.freelancecookies.entitys.DepositoSaque;
 import com.devcookies.freelancecookies.entitys.Usuario;
 import com.devcookies.freelancecookies.repository.DepositoSaqueRepository;
@@ -19,21 +20,21 @@ public class DepositoSaqueServiceImpl implements DepositoService {
     @Autowired
     private UsuarioRepository usuarioRepository;
     @Override
-    public DepositoSaque createDepositoSaque(DepositoSaque depositoSaque) {
-        Usuario usuarioSearched = usuarioRepository.findUsuarioById(depositoSaque.getUsuario().getId());
+    public DepositoSaqueDTO createDepositoSaque(DepositoSaqueDTO depositoSaque) {
+        Usuario usuarioSearched = usuarioRepository.findUsuarioById(depositoSaque.getUsuarioId());
         if(usuarioSearched == null)
             return null;
-        depositoSaque.setUsuario(usuarioSearched);
+        depositoSaque.setUsuarioId(usuarioSearched.getId());
         try{
-            DepositoSaque depositoCreated = depositoSaqueRepository.save(depositoSaque);
+            DepositoSaque createDepositoSaque = new DepositoSaque(depositoSaque, usuarioSearched);
             usuarioSearched.setSaldo(usuarioSearched.getSaldo() + depositoSaque.getAlteracao());
             usuarioRepository.save(usuarioSearched);
-            return depositoCreated;
+            return new DepositoSaqueDTO(createDepositoSaque);
         }catch(Exception e){
             System.out.println("ERRO AO TENTAR CRIAR DEPOSITO");
             DepositoSaque depositoError = new DepositoSaque();
             depositoError.setTempoAtual(null);
-            return depositoError;
+            return new DepositoSaqueDTO(depositoError);
         }
     }
 

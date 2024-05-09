@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.entitys;
 
+import com.devcookies.freelancecookies.dto.DepositoSaqueDTO;
 import jakarta.persistence.*;
 import java.util.Date;
 
@@ -42,6 +43,15 @@ public class DepositoSaque {
         this.agencia = agencia;
         this.conta = conta;
         TempoAtual = tempoAtual;
+    }
+
+    public DepositoSaque(DepositoSaqueDTO depositoSaqueDTO, Usuario usuario){
+        Id = depositoSaqueDTO.getId();
+        Usuario = usuario;
+        alteracao = depositoSaqueDTO.getAlteracao();
+        agencia = depositoSaqueDTO.getAgencia();
+        conta = depositoSaqueDTO.getConta();
+        TempoAtual = depositoSaqueDTO.getTempoAtual();
     }
 
     public DepositoSaque(){}

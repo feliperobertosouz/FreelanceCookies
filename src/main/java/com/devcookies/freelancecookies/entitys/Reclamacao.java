@@ -35,9 +35,9 @@ public class Reclamacao {
         TempoAtual = tempoAtual;
     }
 
-    public Reclamacao(ReclamacaoDTO reclamacaoDTO, Usuario usuario){
+    public Reclamacao(ReclamacaoDTO reclamacaoDTO, Usuario usuario, Usuario usuarioReclamado){
         Id = reclamacaoDTO.getId();
-
+        UsuarioReclamado = usuarioReclamado;
         Usuario = usuario;
         Texto = reclamacaoDTO.getTexto();
         TempoAtual = reclamacaoDTO.getTempoAtual();

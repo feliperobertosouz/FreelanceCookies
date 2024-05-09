@@ -23,6 +23,10 @@ public class DepositoSaqueDTO {
 
     public DepositoSaqueDTO(DepositoSaque depositoSaque){
         this.id = depositoSaque.getId();
+        this.usuarioId = depositoSaque.getUsuario().getId();
+        this.agencia = depositoSaque.getAgencia();
+        this.conta = depositoSaque.getConta();
+        this.tempoAtual = depositoSaque.getTempoAtual();
     }
 
 
