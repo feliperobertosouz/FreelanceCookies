@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.controller;
 
+import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import com.devcookies.freelancecookies.entitys.Reclamacao;
 import com.devcookies.freelancecookies.service.interfaces.ReclamacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +34,12 @@ public class ReclamacaoController {
     }
 
     @PostMapping
-    public ResponseEntity<Reclamacao> createReclamacao(@RequestBody Reclamacao reclamacao) throws Exception {
+    public ResponseEntity<ReclamacaoDTO> createReclamacao(@RequestBody ReclamacaoDTO reclamacao) throws Exception {
 
         try{
-            Reclamacao user = reclamacaoService.createReclamacao(reclamacao);
-            if (user != null){
-                return ResponseEntity.status(HttpStatus.CREATED).body(user);
+            ReclamacaoDTO reclamacaoCreted = reclamacaoService.createReclamacao(reclamacao);
+            if (reclamacaoCreted != null){
+                return ResponseEntity.status(HttpStatus.CREATED).body(reclamacaoCreted);
             } else{
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }

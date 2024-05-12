@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.controller;
 
+import com.devcookies.freelancecookies.dto.UsuarioDTO;
 import com.devcookies.freelancecookies.entitys.Usuario;
 import com.devcookies.freelancecookies.service.interfaces.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,13 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody Usuario usuario) {
-        Usuario user = usuarioService.cadastrarUsuario(usuario);
-        if (user != null){
-            return ResponseEntity.status(HttpStatus.CREATED).body(user);
-        } else{
+    public ResponseEntity<UsuarioDTO> cadastrarUsuario(@RequestBody UsuarioDTO usuario) {
+        Usuario user = new Usuario(usuario);
+        try{
+            user = usuarioService.cadastrarUsuario(user);
+            UsuarioDTO userResponse = new UsuarioDTO(user);
+            return ResponseEntity.status(HttpStatus.OK).body(userResponse);
+        }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         }
     }

@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.controller;
 
+import com.devcookies.freelancecookies.dto.TransacaoDTO;
 import com.devcookies.freelancecookies.entitys.Transacao;
 import com.devcookies.freelancecookies.service.interfaces.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +24,9 @@ public class TransacaoController {
     }
 
     @PostMapping
-    public ResponseEntity<Transacao> createTransacao(@RequestBody Transacao transacao) {
+    public ResponseEntity<TransacaoDTO> createTransacao(@RequestBody TransacaoDTO transacao) {
         try{
-            Transacao transacaoCreated = transacaoService.createTransacao(transacao);
+            TransacaoDTO transacaoCreated = transacaoService.createTransacao(transacao);
             return new ResponseEntity<>(transacaoCreated, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
