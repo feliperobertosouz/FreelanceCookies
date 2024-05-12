@@ -1,7 +1,10 @@
 package com.devcookies.freelancecookies.dto;
 
 import com.devcookies.freelancecookies.entitys.Oferta;
+import org.springframework.cglib.core.Local;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class OfertaDTO {
@@ -13,12 +16,12 @@ public class OfertaDTO {
     private int prazo;
     private double preco;
     private boolean status;
-    private Date tempoAtual;
+    private LocalDateTime tempoAtual;
 
 
     public OfertaDTO() {}
 
-    public OfertaDTO(int id, int usuarioId, String titulo, String texto, String imagem, int prazo, double preco, boolean status, Date tempoAtual) {
+    public OfertaDTO(int id, int usuarioId, String titulo, String texto, String imagem, int prazo, double preco, boolean status, LocalDateTime tempoAtual) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.titulo = titulo;
@@ -28,6 +31,17 @@ public class OfertaDTO {
         this.preco = preco;
         this.status = status;
         this.tempoAtual = tempoAtual;
+    }
+
+    public OfertaDTO(int usuarioId, String titulo, String texto, String imagem, int prazo, double preco) {
+        this.usuarioId = usuarioId;
+        this.titulo = titulo;
+        this.texto = texto;
+        this.imagem = imagem;
+        this.prazo = prazo;
+        this.preco = preco;
+        this.status = true;
+        this.tempoAtual = LocalDateTime.now();
     }
 
     public OfertaDTO(Oferta oferta){
@@ -106,11 +120,11 @@ public class OfertaDTO {
         this.status = status;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return tempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {
+    public void setTempoAtual(LocalDateTime tempoAtual) {
         this.tempoAtual = tempoAtual;
     }
 }

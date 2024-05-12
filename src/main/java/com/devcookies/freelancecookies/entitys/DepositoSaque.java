@@ -2,6 +2,8 @@ package com.devcookies.freelancecookies.entitys;
 
 import com.devcookies.freelancecookies.dto.DepositoSaqueDTO;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -24,11 +26,10 @@ public class DepositoSaque {
     private int conta;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date TempoAtual;
+    private LocalDateTime TempoAtual;
 
 
-    public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
+    public DepositoSaque(int id, Usuario usuario_Id, double alteracao, int agencia, int conta, LocalDateTime tempoAtual) {
         Id = id;
         Usuario = usuario_Id;
         this.alteracao = alteracao;
@@ -37,7 +38,7 @@ public class DepositoSaque {
         TempoAtual = tempoAtual;
     }
 
-    public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, Date tempoAtual) {
+    public DepositoSaque(Usuario usuario_Id, double alteracao, int agencia, int conta, LocalDateTime tempoAtual) {
         Usuario = usuario_Id;
         this.alteracao = alteracao;
         this.agencia = agencia;
@@ -96,9 +97,9 @@ public class DepositoSaque {
         this.conta = conta;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {TempoAtual = tempoAtual;}
+    public void setTempoAtual(LocalDateTime tempoAtual) {TempoAtual = tempoAtual;}
 }

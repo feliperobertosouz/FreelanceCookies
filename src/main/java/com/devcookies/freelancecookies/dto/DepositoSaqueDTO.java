@@ -2,6 +2,8 @@ package com.devcookies.freelancecookies.dto;
 
 import com.devcookies.freelancecookies.entitys.DepositoSaque;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class DepositoSaqueDTO {
@@ -10,9 +12,9 @@ public class DepositoSaqueDTO {
     private double alteracao;
     private int agencia;
     private int conta;
-    private Date tempoAtual;
+    private LocalDateTime tempoAtual;
 
-    public DepositoSaqueDTO(int id, int usuarioId, double alteracao, int agencia, int conta, Date tempoAtual) {
+    public DepositoSaqueDTO(int id, int usuarioId, double alteracao, int agencia, int conta, LocalDateTime tempoAtual) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.alteracao = alteracao;
@@ -71,11 +73,11 @@ public class DepositoSaqueDTO {
         this.conta = conta;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return tempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {
+    public void setTempoAtual(LocalDateTime tempoAtual) {
         this.tempoAtual = tempoAtual;
     }
 

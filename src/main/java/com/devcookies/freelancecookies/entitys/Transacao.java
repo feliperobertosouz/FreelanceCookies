@@ -2,6 +2,8 @@ package com.devcookies.freelancecookies.entitys;
 
 import com.devcookies.freelancecookies.dto.TransacaoDTO;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -23,8 +25,7 @@ public class Transacao {
     private Oferta Oferta;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date TempoAtual;
+    private LocalDateTime TempoAtual;
 
     @Column(nullable = false)
     private double Transacao;
@@ -32,7 +33,7 @@ public class Transacao {
     public Transacao() {
     }
 
-    public Transacao(Usuario pagador_Id, Usuario recebedor_Id, Oferta oferta_Id, Date tempoAtual, double transacao) {
+    public Transacao(Usuario pagador_Id, Usuario recebedor_Id, Oferta oferta_Id, LocalDateTime tempoAtual, double transacao) {
         Pagador = pagador_Id;
         Recebedor = recebedor_Id;
         Oferta = oferta_Id;
@@ -81,11 +82,11 @@ public class Transacao {
         Oferta = oferta_Id;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {
+    public void setTempoAtual(LocalDateTime tempoAtual) {
         TempoAtual = tempoAtual;
     }
 

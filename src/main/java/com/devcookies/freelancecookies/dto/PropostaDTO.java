@@ -2,6 +2,7 @@ package com.devcookies.freelancecookies.dto;
 
 import com.devcookies.freelancecookies.entitys.Proposta;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class PropostaDTO {
@@ -11,12 +12,12 @@ public class PropostaDTO {
     private String texto;
     private int prazo;
     private double preco;
-    private Date tempoAtual;
+    private LocalDateTime tempoAtual;
 
     public PropostaDTO() {
     }
 
-    public PropostaDTO(int id, int usuarioId, int ofertaId, String texto, int prazo, double preco, Date tempoAtual) {
+    public PropostaDTO(int id, int usuarioId, int ofertaId, String texto, int prazo, double preco, LocalDateTime tempoAtual) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.ofertaId = ofertaId;
@@ -84,11 +85,11 @@ public class PropostaDTO {
         this.preco = preco;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return tempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {
+    public void setTempoAtual(LocalDateTime tempoAtual) {
         this.tempoAtual = tempoAtual;
     }
 }

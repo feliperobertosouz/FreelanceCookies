@@ -26,9 +26,27 @@ public class UsuarioDTO {
         this.avaliacoes = avaliacoes;
     }
 
-    public UsuarioDTO(Usuario usuario){
-
+    public UsuarioDTO(String nome, String email, String cpf, String telefone, String senha) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.telefone = telefone;
+        this.senha = senha;
     }
+
+
+    public UsuarioDTO(Usuario usuario){
+        this.nome = usuario.getNome();
+        this.senha = usuario.getSenha();
+        this.email = usuario.getEmail();
+        this.cpf = usuario.getCpf();
+        this.id = usuario.getId();
+        this.saldo = usuario.getSaldo();
+        this.avaliacoes = usuario.getAvaliacoes();
+        this.nota = usuario.getNota();
+    }
+
+    public UsuarioDTO(){}
     public int getId() {
         return id;
     }

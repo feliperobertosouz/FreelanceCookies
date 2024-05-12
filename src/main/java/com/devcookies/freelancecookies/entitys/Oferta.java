@@ -2,6 +2,8 @@ package com.devcookies.freelancecookies.entitys;
 
 import com.devcookies.freelancecookies.dto.OfertaDTO;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -32,11 +34,10 @@ public class Oferta {
     private boolean Status;
 
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date TempoAtual;
+    private LocalDateTime TempoAtual;
 
 
-    public Oferta(int id, Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, Date tempoAtual) {
+    public Oferta(int id, Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, LocalDateTime tempoAtual) {
         Id = id;
         Usuario = usuario_Id;
         Titulo = titulo;
@@ -48,7 +49,7 @@ public class Oferta {
         TempoAtual = tempoAtual;
     }
 
-    public Oferta(Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, Date tempoAtual) {
+    public Oferta(Usuario usuario_Id, String titulo, String texto, String imagem, int prazo, double preco, boolean status, LocalDateTime tempoAtual) {
         Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
@@ -59,7 +60,7 @@ public class Oferta {
         TempoAtual = tempoAtual;
     }
 
-    public Oferta(Usuario usuario_Id, String titulo, String texto, int prazo, double preco, boolean status, Date tempoAtual) {
+    public Oferta(Usuario usuario_Id, String titulo, String texto, int prazo, double preco, boolean status, LocalDateTime tempoAtual) {
         Usuario = usuario_Id;
         Titulo = titulo;
         Texto = texto;
@@ -76,10 +77,11 @@ public class Oferta {
         Id = ofertaDTO.getId();
         Usuario = usuario;
         Texto = ofertaDTO.getTexto();
+        Titulo = ofertaDTO.getTitulo();
         Prazo = ofertaDTO.getPrazo();
         Preco = ofertaDTO.getPreco();
         Status = ofertaDTO.isStatus();
-        TempoAtual = ofertaDTO.getTempoAtual();
+        TempoAtual = LocalDateTime.now();
     }
 
     public int getId() {
@@ -146,11 +148,11 @@ public class Oferta {
         Status = status;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {
+    public void setTempoAtual(LocalDateTime tempoAtual) {
         TempoAtual = tempoAtual;
     }
 }

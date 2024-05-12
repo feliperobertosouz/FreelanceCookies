@@ -1,5 +1,6 @@
 package com.devcookies.freelancecookies.entitys;
 
+import com.devcookies.freelancecookies.dto.UsuarioDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -56,6 +57,15 @@ public class Usuario {
 
     public Usuario() {
     }
+
+    public Usuario(UsuarioDTO usuarioDTO){
+        Nome = usuarioDTO.getNome();
+        Email = usuarioDTO.getEmail();
+        Cpf = usuarioDTO.getCpf();
+        Telefone = usuarioDTO.getTelefone();
+        Senha = usuarioDTO.getSenha();
+    }
+
 
     
 

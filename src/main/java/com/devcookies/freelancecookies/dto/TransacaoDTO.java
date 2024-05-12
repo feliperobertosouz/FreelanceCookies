@@ -2,6 +2,7 @@ package com.devcookies.freelancecookies.dto;
 
 import com.devcookies.freelancecookies.entitys.Transacao;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class TransacaoDTO {
@@ -9,12 +10,10 @@ public class TransacaoDTO {
     private int pagadorId;
     private int recebedorId;
     private int ofertaId;
-    private Date tempoAtual;
+    private LocalDateTime tempoAtual;
     private double transacao;
 
-
-
-    public TransacaoDTO(int id, int pagadorId, int recebedorId, int ofertaId, Date tempoAtual, double transacao) {
+    public TransacaoDTO(int id, int pagadorId, int recebedorId, int ofertaId, LocalDateTime tempoAtual, double transacao) {
         this.id = id;
         this.pagadorId = pagadorId;
         this.recebedorId = recebedorId;
@@ -64,11 +63,11 @@ public class TransacaoDTO {
         this.ofertaId = ofertaId;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return tempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {
+    public void setTempoAtual(LocalDateTime tempoAtual) {
         this.tempoAtual = tempoAtual;
     }
 

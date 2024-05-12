@@ -3,6 +3,8 @@ package com.devcookies.freelancecookies.entitys;
 import com.devcookies.freelancecookies.controller.UsuarioController;
 import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -23,12 +25,12 @@ public class Reclamacao {
     private String Texto;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date TempoAtual;
+    private LocalDateTime TempoAtual;
 
     public Reclamacao() {
     }
 
-    public Reclamacao(Usuario usuario_Id, Transacao transacao_Id, DepositoSaque depositoSaque_Id, String texto, Date tempoAtual, Usuario UsuarioReclamado_Id) {
+    public Reclamacao(Usuario usuario_Id, Transacao transacao_Id, DepositoSaque depositoSaque_Id, String texto, LocalDateTime tempoAtual, Usuario UsuarioReclamado_Id) {
         Usuario = usuario_Id;
         UsuarioReclamado =  UsuarioReclamado_Id;
         Texto = texto;
@@ -75,9 +77,9 @@ public class Reclamacao {
         Texto = texto;
     }
 
-    public Date getTempoAtual() {
+    public LocalDateTime getTempoAtual() {
         return TempoAtual;
     }
 
-    public void setTempoAtual(Date tempoAtual) {TempoAtual = tempoAtual;}
+    public void setTempoAtual(LocalDateTime tempoAtual) {TempoAtual = tempoAtual;}
 }
