@@ -1,0 +1,687 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+  - url: http://localhost:8080
+    description: Generated server url
+paths:
+  /api/usuarios:
+    get:
+      tags:
+        - usuario-controller
+      operationId: findAllUsuarios
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usuario'
+    put:
+      tags:
+        - usuario-controller
+      operationId: atualizarUsuariot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Usuario'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Usuario'
+    post:
+      tags:
+        - usuario-controller
+      operationId: cadastrarUsuario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/UsuarioDTO'
+  /api/transacoes:
+    get:
+      tags:
+        - transacao-controller
+      operationId: findAllTransacoes
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transacao'
+    post:
+      tags:
+        - transacao-controller
+      operationId: createTransacao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransacaoDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/TransacaoDTO'
+  /api/reclamacoes:
+    get:
+      tags:
+        - reclamacao-controller
+      operationId: findAllReclamacoes
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reclamacao'
+    post:
+      tags:
+        - reclamacao-controller
+      operationId: createReclamacao
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReclamacaoDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ReclamacaoDTO'
+  /api/propostas:
+    get:
+      tags:
+        - proposta-controller
+      operationId: findAllPropostas
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Proposta'
+    post:
+      tags:
+        - proposta-controller
+      operationId: createProposta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PropostaDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/PropostaDTO'
+  /api/ofertas:
+    get:
+      tags:
+        - oferta-controller
+      operationId: findAllOfertas
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Oferta'
+    post:
+      tags:
+        - oferta-controller
+      operationId: createOferta
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfertaDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/OfertaDTO'
+  /api/deposito:
+    get:
+      tags:
+        - deposito-controller
+      operationId: getAllDepositos
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DepositoSaque'
+    post:
+      tags:
+        - deposito-controller
+      operationId: createDepositoSaque
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepositoSaqueDTO'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DepositoSaqueDTO'
+  /api/usuarios/{id}:
+    get:
+      tags:
+        - usuario-controller
+      operationId: findUsuarioById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Usuario'
+    delete:
+      tags:
+        - usuario-controller
+      operationId: deletarUsuarioById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+  /api/transacoes/{id}:
+    get:
+      tags:
+        - transacao-controller
+      operationId: getTransacao
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Transacao'
+    delete:
+      tags:
+        - transacao-controller
+      operationId: deleteTransacao
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Transacao'
+  /api/reclamacoes/{id}:
+    get:
+      tags:
+        - reclamacao-controller
+      operationId: getReclamacaoById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Reclamacao'
+    delete:
+      tags:
+        - reclamacao-controller
+      operationId: deletarReclamacaoById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+  /api/propostas/{id}:
+    get:
+      tags:
+        - proposta-controller
+      operationId: getProposta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Proposta'
+    delete:
+      tags:
+        - proposta-controller
+      operationId: deleteProposta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Proposta'
+  /api/ofertas/{id}:
+    get:
+      tags:
+        - oferta-controller
+      operationId: getOferta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Oferta'
+    delete:
+      tags:
+        - oferta-controller
+      operationId: deleteOferta
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Oferta'
+  /api/deposito/{id}:
+    get:
+      tags:
+        - deposito-controller
+      operationId: getDeposito
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/DepositoSaque'
+  /api/deposito/byUsuario/{usuarioId}:
+    get:
+      tags:
+        - deposito-controller
+      operationId: getDepositoByUsuarioId
+      parameters:
+        - name: usuarioId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DepositoSaque'
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        saldo:
+          type: number
+          format: double
+        email:
+          type: string
+        nota:
+          type: number
+          format: double
+        nome:
+          type: string
+        cpf:
+          type: string
+        senha:
+          type: string
+        telefone:
+          type: string
+        avaliacoes:
+          type: number
+          format: double
+    UsuarioDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        nome:
+          type: string
+        email:
+          type: string
+        cpf:
+          type: string
+        telefone:
+          type: string
+        senha:
+          type: string
+        saldo:
+          type: number
+          format: double
+        nota:
+          type: number
+          format: double
+        avaliacoes:
+          type: number
+          format: double
+    TransacaoDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        pagadorId:
+          type: integer
+          format: int32
+        recebedorId:
+          type: integer
+          format: int32
+        ofertaId:
+          type: integer
+          format: int32
+        tempoAtual:
+          type: string
+          format: date-time
+        transacao:
+          type: number
+          format: double
+    ReclamacaoDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        usuarioId:
+          type: integer
+          format: int32
+        usuarioReclamadoId:
+          type: integer
+          format: int32
+        texto:
+          type: string
+        tempoAtual:
+          type: string
+          format: date-time
+    PropostaDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        usuarioId:
+          type: integer
+          format: int32
+        ofertaId:
+          type: integer
+          format: int32
+        texto:
+          type: string
+        prazo:
+          type: integer
+          format: int32
+        preco:
+          type: number
+          format: double
+        tempoAtual:
+          type: string
+          format: date-time
+    OfertaDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        usuarioId:
+          type: integer
+          format: int32
+        titulo:
+          type: string
+        texto:
+          type: string
+        imagem:
+          type: string
+        prazo:
+          type: integer
+          format: int32
+        preco:
+          type: number
+          format: double
+        status:
+          type: boolean
+        tempoAtual:
+          type: string
+          format: date-time
+    DepositoSaqueDTO:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        usuarioId:
+          type: integer
+          format: int32
+        alteracao:
+          type: number
+          format: double
+        agencia:
+          type: integer
+          format: int32
+        conta:
+          type: integer
+          format: int32
+        tempoAtual:
+          type: string
+          format: date-time
+    Oferta:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        status:
+          type: boolean
+        tempoAtual:
+          type: string
+          format: date-time
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+        texto:
+          type: string
+        preco:
+          type: number
+          format: double
+        imagem:
+          type: string
+        titulo:
+          type: string
+        prazo:
+          type: integer
+          format: int32
+    Transacao:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        oferta:
+          $ref: '#/components/schemas/Oferta'
+        transacao:
+          type: number
+          format: double
+        tempoAtual:
+          type: string
+          format: date-time
+        pagador:
+          $ref: '#/components/schemas/Usuario'
+        recebedor:
+          $ref: '#/components/schemas/Usuario'
+    Reclamacao:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        tempoAtual:
+          type: string
+          format: date-time
+        usuarioReclamado:
+          $ref: '#/components/schemas/Usuario'
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+        texto:
+          type: string
+    Proposta:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        oferta:
+          $ref: '#/components/schemas/Oferta'
+        tempoAtual:
+          type: string
+          format: date-time
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+        texto:
+          type: string
+        preco:
+          type: number
+          format: double
+        prazo:
+          type: integer
+          format: int32
+    DepositoSaque:
+      type: object
+      properties:
+        alteracao:
+          type: number
+          format: double
+        agencia:
+          type: integer
+          format: int32
+        conta:
+          type: integer
+          format: int32
+        id:
+          type: integer
+          format: int32
+        tempoAtual:
+          type: string
+          format: date-time
+        usuario:
+          $ref: '#/components/schemas/Usuario'
