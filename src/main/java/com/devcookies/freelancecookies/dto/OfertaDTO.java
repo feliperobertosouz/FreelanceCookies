@@ -8,8 +8,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class OfertaDTO {
-    private int id;
-    private int usuarioId;
+    private static int id;
+    private UsuarioDTO usuarioId;
     private String titulo;
     private String texto;
     private String imagem;
@@ -21,7 +21,7 @@ public class OfertaDTO {
 
     public OfertaDTO() {}
 
-    public OfertaDTO(int id, int usuarioId, String titulo, String texto, String imagem, int prazo, double preco, boolean status, LocalDateTime tempoAtual) {
+    public OfertaDTO(int id, UsuarioDTO usuarioId, String titulo, String texto, String imagem, int prazo, double preco, boolean status, LocalDateTime tempoAtual) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.titulo = titulo;
@@ -33,7 +33,7 @@ public class OfertaDTO {
         this.tempoAtual = tempoAtual;
     }
 
-    public OfertaDTO(int usuarioId, String titulo, String texto, String imagem, int prazo, double preco) {
+    public OfertaDTO(UsuarioDTO usuarioId, String titulo, String texto, String imagem, int prazo, double preco) {
         this.usuarioId = usuarioId;
         this.titulo = titulo;
         this.texto = texto;
@@ -46,7 +46,7 @@ public class OfertaDTO {
 
     public OfertaDTO(Oferta oferta){
         this.id = oferta.getId();
-        this.usuarioId = oferta.getUsuario().getId();
+        this.usuarioId = new UsuarioDTO(oferta.getUsuario().getId(), oferta.getUsuario().getNome());
         this.titulo = oferta.getTitulo();
         this.texto = oferta.getTexto();
         this.imagem = oferta.getImagem();
@@ -56,7 +56,12 @@ public class OfertaDTO {
         this.tempoAtual = oferta.getTempoAtual();
     }
 
-    public int getId() {
+    public OfertaDTO(int id, String titulo) {
+        this.id = id;
+        this.titulo = titulo;
+    }
+
+    public static int getId() {
         return id;
     }
 
@@ -64,13 +69,11 @@ public class OfertaDTO {
         this.id = id;
     }
 
-    public int getUsuarioId() {
-        return usuarioId;
+    public static int getUsuarioId() {
+        return UsuarioDTO.getId();
     }
 
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    public void setUsuarioId(int usuarioId) {this.usuarioId.setId(usuarioId);}
 
     public String getTitulo() {
         return titulo;

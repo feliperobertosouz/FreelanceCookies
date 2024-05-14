@@ -4,7 +4,7 @@ import com.devcookies.freelancecookies.entitys.Usuario;
 
 public class UsuarioDTO {
 
-    private int id;
+    private static int id;
     private String nome;
     private String email;
     private String cpf;
@@ -14,28 +14,30 @@ public class UsuarioDTO {
     private double nota;
     private double avaliacoes;
 
-    public UsuarioDTO(String nomeDTO, String email, String cpf, String telefone, String senha) {
-        this.nome = nomeDTO;
-        this.email = email;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.senha = senha;
-    }
-
+    public UsuarioDTO() {}
 
     public UsuarioDTO(Usuario usuario){
         this.nome = usuario.getNome();
-        this.senha = usuario.getSenha();
         this.email = usuario.getEmail();
         this.cpf = usuario.getCpf();
+        this.telefone = usuario.getTelefone();
+        this.senha = usuario.getSenha();
         this.id = usuario.getId();
         this.saldo = usuario.getSaldo();
         this.avaliacoes = usuario.getAvaliacoes();
         this.nota = usuario.getNota();
     }
 
-    public UsuarioDTO(){}
-    public int getId() {
+    public UsuarioDTO(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
+    public UsuarioDTO(UsuarioDTO id, String nome) {
+
+    }
+
+    public static int getId() {
         return id;
     }
 
@@ -107,4 +109,3 @@ public class UsuarioDTO {
         this.avaliacoes = avaliacoes;
     }
 }
-

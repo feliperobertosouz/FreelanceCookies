@@ -1,6 +1,8 @@
 package com.devcookies.freelancecookies.service;
 
+import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import com.devcookies.freelancecookies.entitys.Oferta;
+import com.devcookies.freelancecookies.entitys.Reclamacao;
 import com.devcookies.freelancecookies.entitys.Transacao;
 import com.devcookies.freelancecookies.entitys.Usuario;
 import com.devcookies.freelancecookies.repository.TransacaoRepository;
@@ -12,6 +14,7 @@ import com.devcookies.freelancecookies.dto.TransacaoDTO;
 import com.devcookies.freelancecookies.repository.OfertaRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TransacaoServiceImpl implements TransacaoService {
@@ -23,6 +26,32 @@ public class TransacaoServiceImpl implements TransacaoService {
     private UsuarioRepository usuarioRepository;
     @Autowired
     private OfertaRepository ofertaRepository;
+
+    @Override
+    public List<TransacaoDTO> findAllTransacoes() {
+        return transacaoRepository.findAll().stream().map(TransacaoDTO::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<ReclamacaoDTO> getAllReclamacoes() {
+        return findAllReclamacoes();
+    }
+
+    @Override
+    public ReclamacaoDTO getReclamacaoById(int id) {
+        return reclamacaoRepository.findById(id).map(ReclamacaoDTO::new).orElse(null);
+    }
+
+    @Override
+    public ReclamacaoDTO createReclamacao(ReclamacaoDTO reclamacaoDTO) {
+        Usuario usuario = usuarioRepository.findUsuarioById(reclamacaoDTO.getUsuarioId());
+        Usuario usuarioReclamado = usuarioRepository.findUsuarioById(reclamacaoDTO.getUsuarioReclamadoId());
+        if (usuario == null || usuarioReclamado == null)
+            return null;
+        Reclamacao reclamacao = new Reclamacao(reclamacaoDTO, usuario, usuarioReclamado);
+        Reclamacao savedReclamacao = reclamacaoRepository.save(reclamacao);
+        return new ReclamacaoDTO(savedReclamacao);
+    }
     @Override
     public TransacaoDTO createTransacao(TransacaoDTO transacao) {
         Usuario pagadorSearched = usuarioRepository.findUsuarioById(transacao.getPagadorId());

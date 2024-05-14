@@ -19,14 +19,14 @@ public class ReclamacaoController {
 
 
     @GetMapping
-    public ResponseEntity<List<Reclamacao>> findAllReclamacoes() {
-        List<Reclamacao> reclamacoes = reclamacaoService.findAllReclamacoes();
+    public ResponseEntity<List<ReclamacaoDTO>> findAllReclamacoes() {
+        List<ReclamacaoDTO> reclamacoes = reclamacaoService.findAllReclamacoes();
         return new ResponseEntity<>(reclamacoes, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Reclamacao> getReclamacaoById(@PathVariable("id") int id) {
-        Reclamacao reclamacao = reclamacaoService.getReclamacaoById(id);
+    public ResponseEntity<ReclamacaoDTO> getReclamacaoById(@PathVariable("id") int id) {
+        ReclamacaoDTO reclamacao = reclamacaoService.getReclamacaoById(id);
         if (reclamacao == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -37,9 +37,9 @@ public class ReclamacaoController {
     public ResponseEntity<ReclamacaoDTO> createReclamacao(@RequestBody ReclamacaoDTO reclamacao) throws Exception {
 
         try{
-            ReclamacaoDTO reclamacaoCreted = reclamacaoService.createReclamacao(reclamacao);
-            if (reclamacaoCreted != null){
-                return ResponseEntity.status(HttpStatus.CREATED).body(reclamacaoCreted);
+            ReclamacaoDTO reclamacaoCreated = reclamacaoService.createReclamacao(reclamacao);
+            if (reclamacaoCreated != null){
+                return ResponseEntity.status(HttpStatus.CREATED).body(reclamacaoCreated);
             } else{
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
             }
@@ -50,7 +50,7 @@ public class ReclamacaoController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarReclamacaoById(@PathVariable("id") int id) {
-        Reclamacao reclamacao = reclamacaoService.getReclamacaoById(id);
+        ReclamacaoDTO reclamacao = reclamacaoService.getReclamacaoById(id);
         if (reclamacao == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

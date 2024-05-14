@@ -3,30 +3,29 @@ package com.devcookies.freelancecookies.dto;
 import com.devcookies.freelancecookies.entitys.Reclamacao;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class ReclamacaoDTO {
     private int id;
-    private int usuarioId;
-    private int usuarioReclamadoId;
+    private UsuarioDTO usuario;
+    private UsuarioDTO usuarioReclamado;
     private String texto;
     private LocalDateTime tempoAtual;
 
     public ReclamacaoDTO() {
     }
 
-    public ReclamacaoDTO(int id, int usuarioId, int usuarioReclamadoId, String texto, LocalDateTime tempoAtual) {
+    public ReclamacaoDTO(int id, UsuarioDTO usuario, UsuarioDTO usuarioReclamado, String texto, LocalDateTime tempoAtual) {
         this.id = id;
-        this.usuarioId = usuarioId;
-        this.usuarioReclamadoId = usuarioReclamadoId;
+        this.usuario = usuario;
+        this.usuarioReclamado = usuarioReclamado;
         this.texto = texto;
         this.tempoAtual = tempoAtual;
     }
 
     public ReclamacaoDTO(Reclamacao reclamacao){
         this.id = reclamacao.getId();
-        this.usuarioId = reclamacao.getUsuario().getId();
-        this.usuarioReclamadoId = reclamacao.getUsuarioReclamado().getId();
+        this.usuario = new UsuarioDTO(reclamacao.getUsuario().getId(), reclamacao.getUsuario().getNome());
+        this.usuarioReclamado = new UsuarioDTO(reclamacao.getUsuarioReclamado().getId(), reclamacao.getUsuarioReclamado().getNome());
         this.texto = reclamacao.getTexto();
         this.tempoAtual = reclamacao.getTempoAtual();
     }
@@ -41,19 +40,25 @@ public class ReclamacaoDTO {
     }
 
     public int getUsuarioId() {
-        return usuarioId;
+        return UsuarioDTO.getId();
     }
 
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuarioId(int usuarioId) {this.usuario.setId(usuarioId);}
+
+    public UsuarioDTO getUsuario() {
+        return usuario;
     }
 
-    public int getUsuarioReclamadoId() {
-        return usuarioReclamadoId;
+    public void setUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
     }
 
-    public void setUsuarioReclamadoId(int usuarioReclamadoId) {
-        this.usuarioReclamadoId = usuarioReclamadoId;
+    public UsuarioDTO getUsuarioReclamado() {
+        return usuarioReclamado;
+    }
+
+    public void setUsuarioReclamado(UsuarioDTO usuarioReclamado) {
+        this.usuarioReclamado = usuarioReclamado;
     }
 
     public String getTexto() {
@@ -70,5 +75,17 @@ public class ReclamacaoDTO {
 
     public void setTempoAtual(LocalDateTime tempoAtual) {
         this.tempoAtual = tempoAtual;
+    }
+
+    public int getUsuarioReclamadoId() {
+        if (usuarioReclamado != null) {
+            return usuarioReclamado.getId();
+        } else {
+            return 0;
+        }
+    }
+
+    public void setUsuarioReclamadoId(int usuarioId) {
+        this.usuario.setId(usuarioId);
     }
 }

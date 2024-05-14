@@ -3,17 +3,16 @@ package com.devcookies.freelancecookies.dto;
 import com.devcookies.freelancecookies.entitys.Transacao;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class TransacaoDTO {
     private int id;
-    private int pagadorId;
-    private int recebedorId;
-    private int ofertaId;
+    private UsuarioDTO pagadorId;
+    private UsuarioDTO recebedorId;
+    private OfertaDTO ofertaId;
     private LocalDateTime tempoAtual;
     private double transacao;
 
-    public TransacaoDTO(int id, int pagadorId, int recebedorId, int ofertaId, LocalDateTime tempoAtual, double transacao) {
+    public TransacaoDTO(int id, UsuarioDTO pagadorId, UsuarioDTO recebedorId, OfertaDTO ofertaId, LocalDateTime tempoAtual, double transacao) {
         this.id = id;
         this.pagadorId = pagadorId;
         this.recebedorId = recebedorId;
@@ -24,9 +23,9 @@ public class TransacaoDTO {
 
     public TransacaoDTO(Transacao transacao){
         this.id = transacao.getId();
-        this.pagadorId = transacao.getPagador().getId();
-        this.recebedorId = transacao.getRecebedor().getId();
-        this.ofertaId = transacao.getOferta().getId();
+        this.pagadorId = new UsuarioDTO(transacao.getPagador().getId(), transacao.getPagador().getNome());
+        this.recebedorId = new UsuarioDTO(transacao.getRecebedor().getId(), transacao.getRecebedor().getNome());
+        this.ofertaId = new OfertaDTO(transacao.getOferta().getId(), transacao.getOferta().getTitulo());
         this.tempoAtual = transacao.getTempoAtual();
         this.transacao = transacao.getTransacao();
     }
@@ -40,27 +39,24 @@ public class TransacaoDTO {
     }
 
     public int getPagadorId() {
-        return pagadorId;
+        return UsuarioDTO.getId();
     }
 
-    public void setPagadorId(int pagadorId) {
-        this.pagadorId = pagadorId;
-    }
+    public void setPagadorId(int pagadorId) {this.pagadorId.setId(pagadorId);}
 
     public int getRecebedorId() {
-        return recebedorId;
+        return UsuarioDTO.getId();
     }
 
-    public void setRecebedorId(int recebedorId) {
-        this.recebedorId = recebedorId;
+    public void setRecebedorId(int recebedorId) {this.recebedorId.setId(recebedorId);
     }
 
     public int getOfertaId() {
-        return ofertaId;
+        return OfertaDTO.getId();
     }
 
     public void setOfertaId(int ofertaId) {
-        this.ofertaId = ofertaId;
+        this.ofertaId.setId(ofertaId);
     }
 
     public LocalDateTime getTempoAtual() {

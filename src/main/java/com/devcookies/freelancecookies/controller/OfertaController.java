@@ -1,6 +1,7 @@
 package com.devcookies.freelancecookies.controller;
 
 import com.devcookies.freelancecookies.dto.OfertaDTO;
+import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import com.devcookies.freelancecookies.entitys.Oferta;
 import com.devcookies.freelancecookies.service.interfaces.OfertaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class OfertaController {
     private OfertaService ofertaService;
 
     @GetMapping
-    public ResponseEntity<List<Oferta>> findAllOfertas(){
-        List<Oferta> ofertas = ofertaService.getAllOfertas();
+    public ResponseEntity<List<OfertaDTO>> findAllOfertas() {
+        List<OfertaDTO> ofertas = ofertaService.findAllOfertas();
         return new ResponseEntity<>(ofertas, HttpStatus.OK);
     }
 
@@ -34,23 +35,18 @@ public class OfertaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Oferta> getOferta(@PathVariable("id") int id){
-        try{
-            Oferta ofertaSearched = ofertaService.getOfertaById(id);
-            if(ofertaSearched != null){
-                return new ResponseEntity<>(ofertaSearched, HttpStatus.OK);
-            }else{
-                return new ResponseEntity<>(null, HttpStatus.OK);
-            }
-        }catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+    public ResponseEntity<OfertaDTO> getOfertabyId(@PathVariable("id") int id) {
+        OfertaDTO ofertaDTO = ofertaService.getOfertaById(id);
+        if (ofertaDTO == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(ofertaDTO, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Oferta> deleteOferta(@PathVariable("id") int id){
         try{
-            Oferta oferta = ofertaService.getOfertaById(id);
+            OfertaDTO oferta = ofertaService.getOfertaById(id);
             if(oferta != null){
                 ofertaService.deleteOferta(id);
                 return new ResponseEntity<>(null, HttpStatus.OK);

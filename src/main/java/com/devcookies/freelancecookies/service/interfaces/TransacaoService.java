@@ -11,6 +11,8 @@ public interface TransacaoService {
 
     public Transacao getTransacaoById(int id);
 
+    List<TransacaoDTO> findAllTransacoes();
+
     public TransacaoDTO createTransacao(TransacaoDTO transacao);
 
     public void deleteTransacao(int id);

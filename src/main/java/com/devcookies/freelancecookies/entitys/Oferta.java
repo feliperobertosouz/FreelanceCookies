@@ -82,6 +82,7 @@ public class Oferta {
         Preco = ofertaDTO.getPreco();
         Status = ofertaDTO.isStatus();
         TempoAtual = LocalDateTime.now();
+        //Imagem = ofertaDTO.getImagem();
     }
 
     public int getId() {
