@@ -7,9 +7,9 @@ import java.util.List;
 public interface TransacaoService {
 
 
-    public List<Transacao> getAllTransacoes();
+    List<TransacaoDTO> getAllTransacoes();
 
-    public Transacao getTransacaoById(int id);
+    TransacaoDTO getTransacaoById(int id);
 
     List<TransacaoDTO> findAllTransacoes();
 

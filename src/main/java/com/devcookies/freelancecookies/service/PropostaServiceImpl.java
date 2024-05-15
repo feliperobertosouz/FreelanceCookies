@@ -1,6 +1,7 @@
 package com.devcookies.freelancecookies.service;
 
 import com.devcookies.freelancecookies.dto.PropostaDTO;
+import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import com.devcookies.freelancecookies.entitys.Proposta;
 import com.devcookies.freelancecookies.entitys.Oferta;
 import com.devcookies.freelancecookies.entitys.Usuario;
@@ -10,10 +11,9 @@ import com.devcookies.freelancecookies.repository.UsuarioRepository;
 import com.devcookies.freelancecookies.service.interfaces.PropostaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 import java.util.List;
 
 @Service
@@ -27,13 +27,17 @@ public class PropostaServiceImpl implements PropostaService {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public List<Proposta> getAllPropostas() {
-        return propostaRepository.findAll();
+    public List<PropostaDTO> getAllPropostas() {
+        return findAllPropostas();
+    }
+
+    private List<PropostaDTO> findAllPropostas() {
+        return propostaRepository.findAll().stream().map(PropostaDTO::new).collect(Collectors.toList());
     }
 
     @Override
     public Proposta getPropostaById(int id) {
-        return propostaRepository.findById(id).orElse(null);
+        return null;
     }
 
     @Override
@@ -53,5 +57,10 @@ public class PropostaServiceImpl implements PropostaService {
         if(propostaSearched != null){
             propostaRepository.delete(propostaSearched);
         }
+    }
+
+    @Override
+    public List<ReclamacaoDTO> findAllReclamacoes() {
+        return null;
     }
 }

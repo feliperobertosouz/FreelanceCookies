@@ -7,8 +7,8 @@ import java.util.Date;
 
 public class PropostaDTO {
     private int id;
-    private int usuarioId;
-    private int ofertaId;
+    private UsuarioDTO usuarioId;
+    private OfertaDTO ofertaId;
     private String texto;
     private int prazo;
     private double preco;
@@ -17,7 +17,7 @@ public class PropostaDTO {
     public PropostaDTO() {
     }
 
-    public PropostaDTO(int id, int usuarioId, int ofertaId, String texto, int prazo, double preco, LocalDateTime tempoAtual) {
+    public PropostaDTO(int id, UsuarioDTO usuarioId, OfertaDTO ofertaId, String texto, int prazo, double preco, LocalDateTime tempoAtual) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.ofertaId = ofertaId;
@@ -29,8 +29,8 @@ public class PropostaDTO {
 
     public PropostaDTO(Proposta proposta){
         this.id = proposta.getId();
-        this.usuarioId = proposta.getUsuario().getId();
-        this.ofertaId = proposta.getOferta().getId();
+        this.usuarioId = new UsuarioDTO(proposta.getUsuario().getId(), proposta.getUsuario().getNome());
+        this.ofertaId = new OfertaDTO(proposta.getOferta().getId(), proposta.getOferta().getTitulo());
         this.texto = proposta.getTexto();
         this.prazo = proposta.getPrazo();
         this.preco = proposta.getPreco();
@@ -46,19 +46,17 @@ public class PropostaDTO {
     }
 
     public int getUsuarioId() {
-        return usuarioId;
+        return UsuarioDTO.getId();
     }
 
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    public void setUsuarioId(int usuarioId) {this.usuarioId.setId(usuarioId);}
 
     public int getOfertaId() {
-        return ofertaId;
+        return OfertaDTO.getId();
     }
 
     public void setOfertaId(int ofertaId) {
-        this.ofertaId = ofertaId;
+        this.ofertaId.setId(ofertaId);
     }
 
     public String getTexto() {

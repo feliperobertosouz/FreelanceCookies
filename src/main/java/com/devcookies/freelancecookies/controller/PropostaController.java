@@ -19,8 +19,8 @@ public class PropostaController {
     private PropostaService propostaService;
 
     @GetMapping
-    public ResponseEntity<List<Proposta>> findAllPropostas(){
-        List<Proposta> propostas = propostaService.getAllPropostas();
+    public ResponseEntity<List<PropostaDTO>> findAllPropostas(){
+        List<PropostaDTO> propostas = propostaService.getAllPropostas();
         return new ResponseEntity<>(propostas, HttpStatus.OK);
     }
 

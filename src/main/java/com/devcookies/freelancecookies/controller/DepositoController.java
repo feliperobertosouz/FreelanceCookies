@@ -19,7 +19,7 @@ public class DepositoController {
     private DepositoService depositoService;
 
     @GetMapping
-    public ResponseEntity<List<DepositoSaque>> getAllDepositos(){
+    public ResponseEntity<List<DepositoSaqueDTO>> getAllDepositos(){
         try{
             return new ResponseEntity<>(depositoService.getAllDepositoSaque(), HttpStatus.OK);
         }catch (Exception e){
@@ -28,9 +28,9 @@ public class DepositoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DepositoSaque> getDeposito(@PathVariable("id")int id){
+    public ResponseEntity<DepositoSaqueDTO> getDeposito(@PathVariable("id")int id){
         try{
-            DepositoSaque deposito = depositoService.getDepositoSaqueById(id);
+            DepositoSaqueDTO deposito = depositoService.getDepositoSaqueById(id);
             return new ResponseEntity<>(deposito, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -48,7 +48,7 @@ public class DepositoController {
     }
 
     @GetMapping("/byUsuario/{usuarioId}")
-    public ResponseEntity<List<DepositoSaque>> getDepositoByUsuarioId(@PathVariable("usuarioId") int usuarioId){
+    public ResponseEntity<List<DepositoSaqueDTO>> getDepositoByUsuarioId(@PathVariable("usuarioId") int usuarioId){
         try{
             return new ResponseEntity<>(depositoService.getAllDepositsOfUsuario(usuarioId), HttpStatus.OK);
         }catch (Exception e){

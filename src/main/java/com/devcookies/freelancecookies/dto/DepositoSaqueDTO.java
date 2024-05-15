@@ -8,13 +8,13 @@ import java.util.Date;
 
 public class DepositoSaqueDTO {
     private int id;
-    private int usuarioId;
+    private UsuarioDTO usuarioId;
     private double alteracao;
     private int agencia;
     private int conta;
     private LocalDateTime tempoAtual;
 
-    public DepositoSaqueDTO(int id, int usuarioId, double alteracao, int agencia, int conta, LocalDateTime tempoAtual) {
+    public DepositoSaqueDTO(int id, UsuarioDTO usuarioId, double alteracao, int agencia, int conta, LocalDateTime tempoAtual) {
         this.id = id;
         this.usuarioId = usuarioId;
         this.alteracao = alteracao;
@@ -25,7 +25,7 @@ public class DepositoSaqueDTO {
 
     public DepositoSaqueDTO(DepositoSaque depositoSaque){
         this.id = depositoSaque.getId();
-        this.usuarioId = depositoSaque.getUsuario().getId();
+        this.usuarioId = new UsuarioDTO(depositoSaque.getUsuario().getId(), depositoSaque.getUsuario().getNome());
         this.agencia = depositoSaque.getAgencia();
         this.conta = depositoSaque.getConta();
         this.tempoAtual = depositoSaque.getTempoAtual();
@@ -42,12 +42,10 @@ public class DepositoSaqueDTO {
     }
 
     public int getUsuarioId() {
-        return usuarioId;
+        return UsuarioDTO.getId();
     }
 
-    public void setUsuarioId(int usuarioId) {
-        this.usuarioId = usuarioId;
-    }
+    public void setUsuarioId(int usuarioId) {this.usuarioId.setId(usuarioId);}
 
     public double getAlteracao() {
         return alteracao;

@@ -1,6 +1,7 @@
 package com.devcookies.freelancecookies.service;
 
 import com.devcookies.freelancecookies.dto.DepositoSaqueDTO;
+import com.devcookies.freelancecookies.dto.ReclamacaoDTO;
 import com.devcookies.freelancecookies.entitys.DepositoSaque;
 import com.devcookies.freelancecookies.entitys.Usuario;
 import com.devcookies.freelancecookies.repository.DepositoSaqueRepository;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DepositoSaqueServiceImpl implements DepositoService {
@@ -39,18 +41,23 @@ public class DepositoSaqueServiceImpl implements DepositoService {
     }
 
     @Override
-    public List<DepositoSaque> getAllDepositoSaque() {
-        return depositoSaqueRepository.findAll();
+    public List<DepositoSaqueDTO> findAllDepositoSaque() {
+        return depositoSaqueRepository.findAll().stream().map(DepositoSaqueDTO::new).collect(Collectors.toList());
     }
 
     @Override
-    public DepositoSaque getDepositoSaqueById(int id) {
-        return depositoSaqueRepository.findById(id).orElse(null);
+    public List<DepositoSaqueDTO> getAllDepositoSaque() {
+        return findAllDepositoSaque();
     }
 
     @Override
-    public List<DepositoSaque> getAllDepositsOfUsuario(int id) {
-        return depositoSaqueRepository.findDepositosByUsuario(id);
+    public DepositoSaqueDTO getDepositoSaqueById(int id) {
+        return depositoSaqueRepository.findById(id).map(DepositoSaqueDTO::new).orElse(null);
+    }
+
+    @Override
+    public List<DepositoSaqueDTO> getAllDepositsOfUsuario(int id) {
+        return depositoSaqueRepository.findDepositosByUsuario(id).stream().map(DepositoSaqueDTO::new).collect(Collectors.toList());
     }
 
 }

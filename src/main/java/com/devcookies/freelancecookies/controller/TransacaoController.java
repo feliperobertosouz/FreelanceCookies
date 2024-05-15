@@ -18,8 +18,8 @@ public class TransacaoController {
     private TransacaoService transacaoService;
 
     @GetMapping
-    public ResponseEntity<List<Transacao>> findAllTransacoes(){
-        List<Transacao> transacoes = transacaoService.getAllTransacoes();
+    public ResponseEntity<List<TransacaoDTO>> findAllTransacoes(){
+        List<TransacaoDTO> transacoes = transacaoService.getAllTransacoes();
         return new ResponseEntity<>(transacoes, HttpStatus.OK);
     }
 
@@ -34,9 +34,9 @@ public class TransacaoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Transacao> getTransacao(@PathVariable("id") int id){
+    public ResponseEntity<TransacaoDTO> getTransacao(@PathVariable("id") int id){
         try{
-            Transacao transacaoSearched = transacaoService.getTransacaoById(id);
+            TransacaoDTO transacaoSearched = transacaoService.getTransacaoById(id);
             if(transacaoSearched != null){
                 return new ResponseEntity<>(transacaoSearched, HttpStatus.OK);
             }else{
@@ -47,9 +47,9 @@ public class TransacaoController {
         }
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Transacao> deleteTransacao(@PathVariable("id") int id){
+    public ResponseEntity<TransacaoDTO> deleteTransacao(@PathVariable("id") int id){
         try{
-            Transacao transacao = transacaoService.getTransacaoById(id);
+            TransacaoDTO transacao = transacaoService.getTransacaoById(id);
             if(transacao != null){
                 transacaoService.deleteTransacao(id);
                 return new ResponseEntity<>(null, HttpStatus.OK);

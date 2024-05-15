@@ -33,24 +33,14 @@ public class TransacaoServiceImpl implements TransacaoService {
     }
 
     @Override
-    public List<ReclamacaoDTO> getAllReclamacoes() {
-        return findAllReclamacoes();
+    public List<TransacaoDTO> getAllTransacoes() {
+        return findAllTransacoes();
     }
 
     @Override
-    public ReclamacaoDTO getReclamacaoById(int id) {
-        return reclamacaoRepository.findById(id).map(ReclamacaoDTO::new).orElse(null);
-    }
-
-    @Override
-    public ReclamacaoDTO createReclamacao(ReclamacaoDTO reclamacaoDTO) {
-        Usuario usuario = usuarioRepository.findUsuarioById(reclamacaoDTO.getUsuarioId());
-        Usuario usuarioReclamado = usuarioRepository.findUsuarioById(reclamacaoDTO.getUsuarioReclamadoId());
-        if (usuario == null || usuarioReclamado == null)
-            return null;
-        Reclamacao reclamacao = new Reclamacao(reclamacaoDTO, usuario, usuarioReclamado);
-        Reclamacao savedReclamacao = reclamacaoRepository.save(reclamacao);
-        return new ReclamacaoDTO(savedReclamacao);
+    public TransacaoDTO getTransacaoById(int id) {
+        Transacao transacao = transacaoRepository.findById(id).orElse(null);
+        return transacao != null ? new TransacaoDTO(transacao) : null;
     }
     @Override
     public TransacaoDTO createTransacao(TransacaoDTO transacao) {
@@ -84,16 +74,5 @@ public class TransacaoServiceImpl implements TransacaoService {
     public List<Transacao> getAllTransacoesOfUsuario(int id) {
         return transacaoRepository.findAll();
     }
-
-    @Override
-    public List<Transacao> getAllTransacoes() {
-        return transacaoRepository.findAll();
-    }
-
-    @Override
-    public Transacao getTransacaoById(int id) {
-        return transacaoRepository.findById(id).orElse(null);
-    }
-
 
 }

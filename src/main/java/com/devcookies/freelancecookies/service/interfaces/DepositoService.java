@@ -10,9 +10,12 @@ import java.util.List;
 public interface DepositoService {
 
     public DepositoSaqueDTO createDepositoSaque(DepositoSaqueDTO depositoSaque);
-    public List<DepositoSaque> getAllDepositoSaque();
 
-    public DepositoSaque getDepositoSaqueById(int id);
+    List<DepositoSaqueDTO> findAllDepositoSaque();
 
-    public List<DepositoSaque> getAllDepositsOfUsuario(int id);
+    public List<DepositoSaqueDTO> getAllDepositoSaque();
+
+    public DepositoSaqueDTO getDepositoSaqueById(int id);
+
+    public List<DepositoSaqueDTO> getAllDepositsOfUsuario(int id);
 }
