@@ -14,20 +14,8 @@ public class UsuarioDTO {
     private double nota;
     private double avaliacoes;
 
-    public UsuarioDTO(int id, String nome, String email, String cpf, String telefone, String senha, double saldo, double nota, double avaliacoes) {
-        this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.cpf = cpf;
-        this.telefone = telefone;
-        this.senha = senha;
-        this.saldo = saldo;
-        this.nota = nota;
-        this.avaliacoes = avaliacoes;
-    }
-
-    public UsuarioDTO(String nome, String email, String cpf, String telefone, String senha) {
-        this.nome = nome;
+    public UsuarioDTO(String nomeDTO, String email, String cpf, String telefone, String senha) {
+        this.nome = nomeDTO;
         this.email = email;
         this.cpf = cpf;
         this.telefone = telefone;
