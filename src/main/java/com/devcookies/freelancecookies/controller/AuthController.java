@@ -15,12 +15,15 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginDTO> login(@RequestBody LoginDTO login) {
-        boolean isAuthenticated = authService.authenticate(login);
-        if (isAuthenticated) {
-            return ResponseEntity.ok("Login successful");
-        } else {
-            return ResponseEntity.status(401).body("Invalid email or password");
+        try {
+            boolean isAuthenticated = authService.authenticate(login);
+            if (isAuthenticated) {
+                return ResponseEntity.ok(login);
+            } else {
+                return ResponseEntity.status(401).body(null);
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(null);
         }
     }
 }
-

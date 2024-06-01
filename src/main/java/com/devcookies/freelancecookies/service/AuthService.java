@@ -1,17 +1,22 @@
 package com.devcookies.freelancecookies.service;
 
 import com.devcookies.freelancecookies.dto.LoginDTO;
+import com.devcookies.freelancecookies.entitys.Usuario;
+import com.devcookies.freelancecookies.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
 
-    // Este é um exemplo simples. Você deve verificar as credenciais contra um banco de dados.
-    public boolean authenticate(LoginDTO loginDTO) {
-        // Exemplo de validação fictícia
-        String dummyEmail = "user@example.com";
-        String dummySenha = "password";
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
-        return dummyEmail.equals(loginDTO.getEmail()) && dummySenha.equals(loginDTO.getSenha());
+    public boolean authenticate(LoginDTO loginDTO) {
+        Usuario usuario = usuarioRepository.findByEmail(loginDTO.getEmail());
+        if (usuario != null) {
+            return loginDTO.getSenha().equals(usuario.getSenha());
+        }
+        return false;
     }
 }
