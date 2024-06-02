@@ -26,4 +26,14 @@ public class AuthController {
             return ResponseEntity.status(500).body(null);
         }
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(@RequestBody LoginDTO login) {
+        boolean isLoggedOut = authService.logout(login.getEmail());
+        if (isLoggedOut) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(400).build();
+        }
+    }
 }
