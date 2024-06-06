@@ -18,6 +18,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Usuario findUsuarioById(@Param("id") int id);
 
 
-
-
+    Usuario findByEmail(String email);
 }
