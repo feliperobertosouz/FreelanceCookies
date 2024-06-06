@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/ofertas")
+@CrossOrigin("*")
 public class OfertaController {
 
     @Autowired
@@ -61,4 +62,5 @@ public class OfertaController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
+
 }
